@@ -14,10 +14,10 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/login', [UserController::class, 'index'])->name('index');
-Route::post('/login', [UserController::class, 'login'])->name('login');
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/login', [UserController::class, 'index'])->name('index')->middleware('guest');
+Route::post('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('/home', function(){
     return view('home');
-})->name('home');
+})->name('home')->middleware('auth');
