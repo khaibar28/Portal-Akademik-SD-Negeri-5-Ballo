@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RekapController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,12 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middl
 Route::get('/home', function(){
     return view('home');
 })->name('home')->middleware('auth');
+
+Route::prefix('/u')->group(function(){
+    Route::prefix('/rekap')->group(function(){
+        Route::get('/', [RekapController::class, 'read'])->name('rekap')->middleware('admin');
+        Route::get('/edit', [RekapController::class, 'edit'])->name('edit')->middleware('admin');
+    });
+});
+
+Route::get('/rekap', [StudentController::class, 'read'])->name('srekap')->middleware('student');

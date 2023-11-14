@@ -36,12 +36,18 @@
             <div>
           <div class="border"></div>
         <li class="list-group-item">
-          <a href="" class="btn">
+          <a href="{{ route('home') }}" class="btn">
             <img src="{{ asset('img/sidebar/home.svg') }}" alt=""><p>Homepage</p></a>
         </li>
         <li class="list-group-item">
-          <a href="" class="btn">
+          @canany(['admin', 'teacher'])
+          <a href="{{ route('rekap') }}" class="btn">
             <img src="{{ asset('img/sidebar/hat.svg') }}" alt=""><p>Rekap Nilai </p></a>
+          @endcan
+          @can('student')
+          <a href="{{ route('srekap') }}" class="btn">
+            <img src="{{ asset('img/sidebar/hat.svg') }}" alt=""><p>Rekap Nilai </p></a>
+          @endcan
         </li>
         <li li class="list-group-item">
           <a href="" class="btn">
@@ -64,7 +70,7 @@
                 </li>
                 <div class="border"></div>
                 <li class="list-group-item">
-                    <img src="{{ asset('img/img.jpeg') }}" alt="" style="border-radius: 50%; width: 40px; height: 40px"><span class="ms-3">User</span>
+                    <img src="{{ asset('img/img.jpeg') }}" alt="" style="border-radius: 50%; width: 40px; height: 40px"><span class="ms-3">{{ auth()->user()->name }}</span>
                 </li>
       </div>
     </div>

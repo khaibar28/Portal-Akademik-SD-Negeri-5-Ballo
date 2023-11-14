@@ -13,7 +13,7 @@
             @csrf
             <p class="login-text" style="font-size: 2rem; font-weight: 800;">Sign In</p>
             <div class="input-group">
-                <input type="text" placeholder="NIS" name="user_number" value="{{ old('user_number') }}" required>
+                <input type="text" placeholder="Username" name="user_number" value="{{ old('user_number') }}" required>
             </div>
             <div class="input-group">
                 <input type="password" placeholder="Password" name="password" value="" required>
