@@ -36,12 +36,18 @@
             <div>
           <div class="border"></div>
         <li class="list-group-item">
-          <a href="" class="btn">
+          <a href="{{ route('home') }}" class="btn">
             <img src="{{ asset('img/sidebar/home.svg') }}" alt=""><p>Homepage</p></a>
         </li>
         <li class="list-group-item">
-          <a href="" class="btn">
+          @canany(['admin', 'teacher'])
+          <a href="{{ route('rekap') }}" class="btn">
             <img src="{{ asset('img/sidebar/hat.svg') }}" alt=""><p>Rekap Nilai </p></a>
+          @endcan
+          @can('student')
+          <a href="{{ route('srekap') }}" class="btn">
+            <img src="{{ asset('img/sidebar/hat.svg') }}" alt=""><p>Rekap Nilai </p></a>
+          @endcan
         </li>
         <li li class="list-group-item">
           <a href="" class="btn">
