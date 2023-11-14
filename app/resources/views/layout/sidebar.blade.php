@@ -55,8 +55,10 @@
           </a>
         </li>
         <li class="list-group-item">
+          @canany(['admin', 'teacher'])
           <a href="" class="btn">
             <img src="{{ asset('img/sidebar/book.svg') }}" alt=""><p>Nilai Akhir</p></a>
+          @endcan
         </li>
     </div>
     <div class="footer">
