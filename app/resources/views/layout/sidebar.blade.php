@@ -64,7 +64,7 @@
                 </li>
                 <div class="border"></div>
                 <li class="list-group-item">
-                    <img src="{{ asset('img/img.jpeg') }}" alt="" style="border-radius: 50%; width: 40px; height: 40px"><span class="ms-3">User</span>
+                    <img src="{{ asset('img/img.jpeg') }}" alt="" style="border-radius: 50%; width: 40px; height: 40px"><span class="ms-3">{{ auth()->user()->name }}</span>
                 </li>
       </div>
     </div>
