@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function read(){
+    public function rekap(){
         return view('rekap');
+    }
+
+    public function tugas(){
+        return view('tugas');
     }
 }

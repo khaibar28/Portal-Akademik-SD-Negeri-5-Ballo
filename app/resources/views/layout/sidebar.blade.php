@@ -6,11 +6,14 @@
     @if(Route::is('home'))
     <title>Home</title>
     @endif
-    @if(Route::is('rekap') || Route::is('srekap'))
+    @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap'))
     <title>Rekap Nilai</title>
     @endif
-    @if(Route::is('setting'))
+    @if(Route::is('setting') || Route::is('akun') || Route::is('kelas'))
     <title>Setting</title>
+    @endif
+    @if(Route::is('stugas'))
+    <title>Tugas</title>
     @endif
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -39,6 +42,21 @@
             <li class="list-group-item">Pengaturan</li>
             |
             <li class="list-group-item" style="color: #3182FB">Setting</li>
+            @endif
+            @if(Route::is('akun'))
+            <li class="list-group-item">Tambahkan Akun</li>
+            |
+            <li class="list-group-item" style="color: #3182FB">Add Account</li>
+            @endif
+            @if(Route::is('kelas'))
+            <li class="list-group-item">Tambahkan Data</li>
+            |
+            <li class="list-group-item" style="color: #3182FB">Add Data</li>
+            @endif
+            @if(Route::is('stugas'))
+            <li class="list-group-item">Info Tugas</li>
+            |
+            <li class="list-group-item" style="color: #3182FB">Task Info</li>
           @endif
         </div>
     </div>
@@ -70,9 +88,11 @@
           @endcan
         </li>
         <li li class="list-group-item">
-          <a href="" class="btn">
+          @can('student')
+          <a href="{{ route('stugas') }}" class="btn">
             <img src="{{ asset('img/sidebar/info.svg') }}" alt=""><p>Info Tugas</p></a>
           </a>
+          @endcan
         </li>
         <li class="list-group-item">
           @canany(['admin', 'teacher'])

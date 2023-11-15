@@ -27,11 +27,17 @@ Route::get('/home', function(){
 
 Route::prefix('/u')->group(function(){
     Route::prefix('/rekap')->group(function(){
-        Route::get('/', [RekapController::class, 'read'])->name('rekap')->middleware('teacher');
-        Route::post('/submit-filter', [RekapController::class, 'index'])->name('submitFilter');
+        Route::get('/', [RekapController::class, 'index'])->name('rekap')->middleware('teacher');
+        Route::post('/submit-filter', [RekapController::class, 'index'])->name('submitFilter')->middleware('teacher');
         Route::get('/edit', [RekapController::class, 'edit'])->name('editrekap')->middleware('teacher');
     });
-    Route::get('/setting', [AdminController::class, 'read'])->name('setting')->middleware('admin');
+    // Route::get('/setting', [AdminController::class, 'read'])->name('setting')->middleware('admin');
+    Route::prefix('/setting')->group(function(){
+        Route::get('/', [AdminController::class, 'read'])->name('setting')->middleware('admin');
+        Route::get('/akun', [AdminController::class, 'akun'])->name('akun')->middleware('admin');
+        Route::get('/kelas', [AdminController::class, 'kelas'])->name('kelas')->middleware('admin');
+    });
 });
 
-Route::get('/rekap', [StudentController::class, 'read'])->name('srekap')->middleware('student');
+Route::get('/rekap', [StudentController::class, 'rekap'])->name('srekap')->middleware('student');
+Route::get('/tugas', [StudentController::class, 'tugas'])->name('stugas')->middleware('student');
