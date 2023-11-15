@@ -41,7 +41,7 @@
       </div>
       <div class="col-md-2">
         <br>
-        <a href="{{ route('editrekap') }}" type="button" class="btn btn-warning ms-4"><i class="fa-solid fa-plus me-2"></i>Edit Data</a>
+        <a href="{{ route('editrekap') }}" type="button" class="btn btn-warning ms-4">Edit Data</a>
       </div>
     </div>
   </form>
@@ -70,6 +70,7 @@
             <td scope="row" class="text-center">{{ $data->UH }}</td>
             <td scope="row" class="text-center">{{ $data->UAS }}</td>
             <td scope="row" class="text-center">
+              {{-- perlu diperabiki utk trigger modal + blm buat modal --}}
               <a href="" onclick="return confirm('Apa anda yakin untuk menghapus?')">
                 <img src="{{ asset('img/trash.svg') }}" alt="">
               </a>

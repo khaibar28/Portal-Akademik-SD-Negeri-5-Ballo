@@ -6,7 +6,7 @@
     @if(Route::is('home'))
     <title>Home</title>
     @endif
-    @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap'))
+    @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap') || Route::is('submitFilter'))
     <title>Rekap Nilai</title>
     @endif
     @if(Route::is('setting') || Route::is('akun') || Route::is('kelas'))
@@ -33,7 +33,7 @@
             |
             <li class="list-group-item" style="color: #3182FB">Dashboard</li>
           @endif
-          @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap'))
+          @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap') || Route::is('submitFilter'))
             <li class="list-group-item">Rekap Nilai</li>
             |
             <li class="list-group-item" style="color: #3182FB">Value Recap</li>
@@ -112,7 +112,7 @@
                 </li>
                 <div class="border"></div>
                 <li class="list-group-item">
-                    <img src="{{ asset('img/img.jpeg') }}" alt="" style="border-radius: 50%; width: 40px; height: 40px"><span class="ms-3">{{ auth()->user()->name }}</span>
+                    <img src="{{ asset('img/user.svg') }}" alt="" style="border-radius: 50%; width: 40px; height: 40px"><span class="ms-3">{{ auth()->user()->name }}</span>
                     @can('admin')
                     <a href="{{ route('setting') }}"><img src="{{ asset('img/sidebar/setting.svg') }}" alt=""></a>
                     @endcan
