@@ -6,19 +6,19 @@
 <div class="container">
     <div class="body d-flex align-items-center">
         <p>Tambahkan Akun</p>
-        <button class="btn btn-primary">Choose</button>
+        <a href="{{ route('akun') }}" class="btn btn-primary">Choose</a>
     </div>
     <div class="body d-flex align-items-center">
         <p>Tambahkan Data</p>
-        <button class="btn btn-primary">Choose</button>
+        <a href="{{ route('kelas') }}" class="btn btn-primary">Choose</a>
     </div>
     <div class="body d-flex align-items-center">
         <p>Data Akun Murid</p>
-        <button class="btn btn-primary">Choose</button>
+        <a href="" class="btn btn-primary">Choose</a>
     </div>
     <div class="body d-flex align-items-center">
         <p>Data Akun Guru</p>
-        <button class="btn btn-primary">Choose</button>
+        <a href="" class="btn btn-primary">Choose</a>
     </div>
 </div>
 @endsection
