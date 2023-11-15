@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-2">
       <br>
-      <a href="{{ route('editrekap') }}" type="button" class="btn btn-warning ms-4"><i class="fa-solid fa-plus me-2"></i>Edit Data</a>
+      <a href="{{ route('editrekap') }}" type="button" class="btn btn-warning ms-4">Edit Data</a>
     </div>
   </div>
 
@@ -75,9 +75,29 @@
             <td scope="row" class="text-center">90</td>
             <td scope="row" class="text-center">90</td>
             <td scope="row" class="text-center">90</td>
-            <td scope="row" class="text-center"><a href="" onclick="return confirm('Apa anda yakin untuk menghapus?')"><img src="{{ asset('img/trash.svg') }}" alt=""></a></td>
+            <td scope="row" class="text-center"><a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn"><img src="{{ asset('img/trash.svg') }}" alt=""></a></td>
         </tr>
     </tbody>
     </table>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <center>
+              <div class="mt-3">
+                <img src="{{ asset('img/alert_merah.svg') }}" alt="">
+              </div>
+          <div class="modal-body p-0">
+              <p class="m-0 mt-1" style="font-weight: bold; font-size: 15px">Are you sure want to delete?</p>
+              <p class="m-0 mt-1" style="font-size: 12px">Data that has been deleted cannot be restored</p>
+          </div>
+          <div class="p-3">
+                  <button type="button" class="btn" data-bs-dismiss="modal" style="border: 1px #3182FB solid">No</button>
+                  <button type="submit" class="btn btn-danger">Yes</button>
+              </div>
+          </center>
+        </div>
+      </div>
+    </div>
 </div>
 @endsection
