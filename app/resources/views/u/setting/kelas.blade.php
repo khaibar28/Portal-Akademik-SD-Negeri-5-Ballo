@@ -4,6 +4,8 @@
 @endsection
 @section('content')
 <div class="container">
+    <form action="{{ route('kelas.store') }}" method="POST">
+    @csrf
     <div class="row">
         <div class="col-md-4">
             NIP/NIS <i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i> 
@@ -23,9 +25,11 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <select name='' class="form-select btn-primary border-secondary" aria-label="Default select example">
+            <select name='grade' class="form-select btn-primary border-secondary" aria-label="Default select example">
                 <option selected disabled>Pilih Kelas</option>
-                <option>Kelas 1</option>
+                @foreach ( $grades as $grade)
+                <option value="{{ $grade }}"> {{ $grade  }}</option>
+                @endforeach
               </select>
         </div>
     </div>
@@ -39,6 +43,7 @@
             <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary" style="box-shadow: 0px 4px 4px 0px #00000040;
             border-radius: 12px">Simpan</button>
         </div>
+        </form>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">

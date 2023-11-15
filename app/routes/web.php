@@ -34,7 +34,9 @@ Route::prefix('/u')->group(function(){
     Route::prefix('/setting')->group(function(){
         Route::get('/', [AdminController::class, 'read'])->name('setting')->middleware('admin');
         Route::get('/akun', [AdminController::class, 'akun'])->name('akun')->middleware('admin');
+        Route::post('/akun', [AdminController::class, 'addAkun'])->name('addAkun')->middleware('admin');
         Route::get('/kelas', [AdminController::class, 'kelas'])->name('kelas')->middleware('admin');
+        Route::post('/kelas',[AdminController::class,'store'])->name('kelas.store')->middleware('admin');
     });
 });
 
