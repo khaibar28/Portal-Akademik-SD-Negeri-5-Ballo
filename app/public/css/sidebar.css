@@ -85,3 +85,6 @@
 .footer li img{
     margin-left: 35px;
 }
+.footer li a{
+    display: inline-block;
+}

@@ -73,6 +73,9 @@
                 <div class="border"></div>
                 <li class="list-group-item">
                     <img src="{{ asset('img/img.jpeg') }}" alt="" style="border-radius: 50%; width: 40px; height: 40px"><span class="ms-3">{{ auth()->user()->name }}</span>
+                    @can('admin')
+                    <a href=""><img src="{{ asset('img/sidebar/setting.svg') }}" alt=""></a>
+                    @endcan
                 </li>
       </div>
     </div>
