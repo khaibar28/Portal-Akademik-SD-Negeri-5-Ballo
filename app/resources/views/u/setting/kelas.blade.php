@@ -29,19 +29,6 @@
               </select>
         </div>
     </div>
-    <div class="row mt-4">
-        <div class="col-md-4">
-            Tahun Ajaran<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i> 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <select name='' class="form-select btn-primary border-secondary" aria-label="Default select example">
-                <option selected disabled>Pilih Kelas</option>
-                <option>Kelas 1</option>
-              </select>
-        </div>
-    </div>
 
     <div class="row mt-4">
         <div class="col-md-1">

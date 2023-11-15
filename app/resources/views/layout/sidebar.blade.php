@@ -6,7 +6,7 @@
     @if(Route::is('home'))
     <title>Home</title>
     @endif
-    @if(Route::is('rekap') || Route::is('srekap'))
+    @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap'))
     <title>Rekap Nilai</title>
     @endif
     @if(Route::is('setting') || Route::is('akun') || Route::is('kelas'))
