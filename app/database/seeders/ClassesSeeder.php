@@ -14,7 +14,7 @@ class ClassesSeeder extends Seeder
     public function run(): void
     {
         Classes::create([
-            'grade' => 'Kelas 1',
+            'grade' => 'Kelas 1 ',
         ]);
 
         Classes::create([
