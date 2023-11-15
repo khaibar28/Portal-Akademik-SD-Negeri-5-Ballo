@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if(Route::is('home'))
     <title>Home</title>
+    @endif
+    @if(Route::is('rekap') || Route::is('srekap'))
+    <title>Rekap Nilai</title>
+    @endif
+    @if(Route::is('setting'))
+    <title>Setting</title>
+    @endif
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -17,9 +25,21 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="title">
+          @if(Route::is('home'))
             <li class="list-group-item">Homepage</li>
             |
             <li class="list-group-item" style="color: #3182FB">Dashboard</li>
+          @endif
+          @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap'))
+            <li class="list-group-item">Rekap Nilai</li>
+            |
+            <li class="list-group-item" style="color: #3182FB">Value Recap</li>
+          @endif
+          @if(Route::is('setting'))
+            <li class="list-group-item">Pengaturan</li>
+            |
+            <li class="list-group-item" style="color: #3182FB">Setting</li>
+          @endif
         </div>
     </div>
 </nav>
@@ -74,7 +94,7 @@
                 <li class="list-group-item">
                     <img src="{{ asset('img/img.jpeg') }}" alt="" style="border-radius: 50%; width: 40px; height: 40px"><span class="ms-3">{{ auth()->user()->name }}</span>
                     @can('admin')
-                    <a href=""><img src="{{ asset('img/sidebar/setting.svg') }}" alt=""></a>
+                    <a href="{{ route('setting') }}"><img src="{{ asset('img/sidebar/setting.svg') }}" alt=""></a>
                     @endcan
                 </li>
       </div>

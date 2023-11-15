@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\StudentController;
 
@@ -26,9 +27,10 @@ Route::get('/home', function(){
 
 Route::prefix('/u')->group(function(){
     Route::prefix('/rekap')->group(function(){
-        Route::get('/', [RekapController::class, 'read'])->name('rekap')->middleware('admin');
-        Route::get('/edit', [RekapController::class, 'edit'])->name('edit')->middleware('admin');
+        Route::get('/', [RekapController::class, 'read'])->name('rekap')->middleware('teacher');
+        Route::get('/edit', [RekapController::class, 'edit'])->name('editrekap')->middleware('teacher');
     });
+    Route::get('/setting', [AdminController::class, 'read'])->name('setting')->middleware('admin');
 });
 
 Route::get('/rekap', [StudentController::class, 'read'])->name('srekap')->middleware('student');
