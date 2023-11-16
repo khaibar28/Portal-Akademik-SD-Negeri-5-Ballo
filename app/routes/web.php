@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RekapController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TugasController;
+use App\Http\Controllers\NilaiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +34,9 @@ Route::prefix('/u')->group(function(){
     });
     Route::prefix('/tugas')->group(function(){
         Route::get('/', [TugasController::class, 'read'])->name('tugas')->middleware('teacher');
+    });
+    Route::prefix('/nilai')->group(function(){
+        Route::get('/', [NilaiController::class, 'readNilai'])->name('nilai')->middleware('teacher');
     });
     Route::prefix('/setting')->group(function(){
         Route::get('/', [AdminController::class, 'read'])->name('setting')->middleware('admin');
