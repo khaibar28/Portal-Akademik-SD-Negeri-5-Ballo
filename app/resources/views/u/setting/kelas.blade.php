@@ -43,9 +43,9 @@
         <div class="col-md-4">
             <select name='school_year' class="form-select btn-primary border-secondary" aria-label="Default select example">
                 <option selected disabled>Pilih Tahun Ajaran/Semester</option>
-                @foreach ( $school_years as $school_year)
+                {{-- @foreach ( $school_years as $school_year)
                 <option value="{{ $school_year }}"> {{ $school_year  }}</option>
-                @endforeach
+                @endforeach --}}
               </select>
         </div>
     </div>
