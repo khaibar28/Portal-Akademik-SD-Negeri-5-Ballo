@@ -17,10 +17,12 @@ return new class extends Migration
             $table->date('deadline')->nullable()->default(null);
             $table->unsignedBigInteger('subjects_id');
             $table->unsignedBigInteger('classess_id');
+            $table->unsignedBigInteger('school_years_id');
             $table->timestamps();
 
             $table->foreign('subjects_id')->references('id')->on('subjects');
             $table->foreign('classess_id')->references('id')->on('classess');
+            $table->foreign('school_years_id')->references('id')->on('school_years');
         });
     }
 
