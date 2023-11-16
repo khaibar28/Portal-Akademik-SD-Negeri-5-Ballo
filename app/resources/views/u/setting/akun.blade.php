@@ -66,12 +66,10 @@
                         style="box-shadow: 0px 4px 4px 0px #00000040; border-radius: 12px; color:#3182FB">Batal</a>
                 </div>
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary"
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
                         style="box-shadow: 0px 4px 4px 0px #00000040; border-radius: 12px">Simpan</button>
                 </div>
             </div>
-        </form>
-    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -93,4 +91,6 @@
             </div>
         </div>
     </div>
+</form>
+</div>
 @endsection
