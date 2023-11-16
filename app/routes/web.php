@@ -30,7 +30,9 @@ Route::prefix('/u')->group(function(){
         Route::get('/', [RekapController::class, 'index'])->name('rekap')->middleware('teacher');
         Route::post('/submit-filter', [RekapController::class, 'index'])->name('submitFilter')->middleware('teacher');
         Route::get('/edit', [RekapController::class, 'edit'])->name('editrekap')->middleware('teacher');
-        Route::get('/tugas', [TugasController::class, 'read'])->name('tugas')->middleware('teacher');
+    });
+    Route::prefix('/tugas')->group(function(){
+        Route::get('/', [TugasController::class, 'read'])->name('tugas')->middleware('teacher');
     });
     Route::prefix('/setting')->group(function(){
         Route::get('/', [AdminController::class, 'read'])->name('setting')->middleware('admin');
