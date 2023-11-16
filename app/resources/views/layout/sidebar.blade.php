@@ -93,6 +93,11 @@
             <img src="{{ asset('img/sidebar/info.svg') }}" alt=""><p>Info Tugas</p></a>
           </a>
           @endcan
+          @canany(['admin', 'teacher'])
+          <a href="{{ route('tugas') }}" class="btn">
+            <img src="{{ asset('img/sidebar/info.svg') }}" alt=""><p>Info Tugas</p></a>
+          </a>
+          @endcan
         </li>
         <li class="list-group-item">
           @canany(['admin', 'teacher'])
