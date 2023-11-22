@@ -34,7 +34,7 @@ Route::prefix('/u')->group(function(){
     });
     Route::prefix('/tugas')->group(function(){
         Route::get('/', [TugasController::class, 'read'])->name('tugas')->middleware('teacher');
-        Route::get('/edit', [TugasController::class, 'edit'])->name('editTugas')->middleware('teacher');
+        Route::get('/add', [TugasController::class, 'add'])->name('addTugas')->middleware('teacher');
 
     });
     Route::prefix('/nilai')->group(function(){

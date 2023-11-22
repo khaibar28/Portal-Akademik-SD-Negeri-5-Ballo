@@ -10,7 +10,7 @@ class TugasController extends Controller
         return view("u/tugas");
     }
 
-    public function edit(){
-        return view("u/editTugas");
+    public function add(){
+        return view("u/tambahTugas");
     }
 }
