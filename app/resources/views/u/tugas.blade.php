@@ -42,7 +42,7 @@
     </div>
     <div class="col-md-2">
       <br>
-      <a href="{{ route('editrekap') }}" type="button" class="btn btn-warning ms-4"><i class="fa-solid fa-plus me-2"></i>Edit Data</a>
+      <a href="{{ route('editTugas') }}" type="button" class="btn btn-warning ms-4"><i class="fa-solid fa-plus me-2"></i>Edit Data</a>
     </div>
   </div>
 
