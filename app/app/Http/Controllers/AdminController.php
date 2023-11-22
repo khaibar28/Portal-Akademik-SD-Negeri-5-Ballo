@@ -25,7 +25,8 @@ class AdminController extends Controller
     public function kelas()
     {
         $grades = Classes::distinct()->pluck('grade');
-        return view('u/setting/kelas', compact('grades'));
+        $school_years = SchoolYear::distinct()->pluck('school_year');
+        return view('u/setting/kelas', compact('grades','school_years'));
     }
 
     public function store(Request $request)
@@ -33,10 +34,11 @@ class AdminController extends Controller
         $data = $request->validate([
             'user_number' => 'required',
             'grade' => 'required',
+            'school_year' => 'required',
 
         ]);
 
-        $schoolYear = SchoolYear::first();
+        $schoolYear = SchoolYear::where('school_year', $data['school_year'])->first();
 
         $class = Classes::where('grade', $data['grade'])
             ->first();
