@@ -43,7 +43,7 @@
     <div class="col-md-2">
       <br>
 
-      <a href="" type="button" class="btn btn-outline-dark ms-4"><i class="fa-solid fa-plus me-2"></i>Tambahkan</a>
+      <a href="{{ route('addTugas') }}" type="button" class="btn btn-outline-dark ms-4"><i class="fa-solid fa-plus me-2"></i>Tambahkan</a>
 
     </div>
   </div>
