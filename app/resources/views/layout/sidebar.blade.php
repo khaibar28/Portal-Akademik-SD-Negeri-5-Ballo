@@ -12,7 +12,7 @@
     @if(Route::is('setting') || Route::is('akun') || Route::is('kelas'))
     <title>Setting</title>
     @endif
-    @if(Route::is('stugas') || Route::is('tugas'))
+    @if(Route::is('stugas') || Route::is('tugas') || Route::is('editTugas'))
     <title>Info Tugas</title>
     @endif
     @if(Route::is('nilai'))
@@ -21,6 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
     @yield('css')
 </head>
@@ -60,6 +61,11 @@
             <li class="list-group-item">Info Tugas</li>
             |
             <li class="list-group-item" style="color: #3182FB">Task Info</li>
+          @endif
+          @if(Route::is('editTugas'))
+            <li class="list-group-item">Tambah Tugas</li>
+            |
+            <li class="list-group-item" style="color: #3182FB">Add Task</li>
           @endif
           @if(Route::is('nilai'))
             <li class="list-group-item">Nilai Akhir</li>
@@ -132,5 +138,7 @@
                 </li>
       </div>
     </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>    
 </body>
 </html>

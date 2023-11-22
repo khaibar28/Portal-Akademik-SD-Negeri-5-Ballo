@@ -9,4 +9,8 @@ class TugasController extends Controller
     public function read(){
         return view("u/tugas");
     }
+
+    public function edit(){
+        return view("u/editTugas");
+    }
 }
