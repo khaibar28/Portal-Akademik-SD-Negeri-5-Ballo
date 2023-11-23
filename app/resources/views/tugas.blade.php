@@ -13,11 +13,15 @@
             </tr>
         </thead>
         <tbody>
+            <!-- @foreach($data as $item)
             <tr>
-                <td scope="row" class="text-center">1</td>
-                <td scope="row" class="text-center">Halaman 12</td>
-                <td scope="row" class="text-center">17 Oktober 2023</td>
+                <td scope="row" class="text-center">{{$loop->iteration}}</td>
+                <td scope="row" class="text-center">{{$item->subject->subject}}</td>
+                <td scope="row" class="text-center">{{$item->task_score}}</td>
+                <td scope="row" class="text-center">{{$item->UH}}</td>
+                <td scope="row" class="text-center">{{$item->UAS}}</td>
             </tr>
+            @endforeach -->
         </tbody>
         </table>
 </div>
