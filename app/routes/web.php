@@ -22,10 +22,6 @@ Route::get('/login', [UserController::class, 'index'])->name('index')->middlewar
 Route::post('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::any('{any}', function($any){
-    return view('404');
-})->where('any', '.*');
-
 Route::get('/home', function(){
     return view('home');
 })->name('home')->middleware('auth');
