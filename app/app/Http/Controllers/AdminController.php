@@ -64,7 +64,7 @@ class AdminController extends Controller
             Score::create($scoreData);
         }
 
-        return redirect()->route('kelas')->with('success', 'Scores created successfully');
+        return redirect()->route('setting')->with('success', 'Scores created successfully');
     }
 
     public function addAkun(Request $request){
