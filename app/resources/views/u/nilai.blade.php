@@ -31,7 +31,9 @@
     <div class="col-md-2"></div>
     <div class="col-md-2">
       <br>
+      @can('admin')
       <button type="submit" class="btn btn-primary ms-2">Konfirmasi</button>
+      @endcan
     </div>
   </div>
   <table class="table mt-5">
