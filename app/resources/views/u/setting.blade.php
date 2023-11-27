@@ -4,6 +4,12 @@
 @endsection
 @section('content')
 <div class="container">
+    @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <div class="body d-flex align-items-center">
         <p>Tambahkan Akun</p>
         <a href="{{ route('akun') }}" class="btn btn-primary">Choose</a>
