@@ -76,8 +76,8 @@ class AdminController extends Controller
             'role' => 'required',
         ]); 
 
-        user::create($data);
+        User::create($data);
 
-        return redirect()->route('setting')->with('succes', 'Data berhasil Disimpan');
+        return redirect()->route('setting')->with('success', 'Akun berhasil ditambahkan');
     }
 }

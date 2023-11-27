@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- @foreach($data as $item)
+            {{-- @foreach($data as $item)
             <tr>
                 <td scope="row" class="text-center">{{$loop->iteration}}</td>
                 <td scope="row" class="text-center">{{$item->subject->subject}}</td>
@@ -21,7 +21,7 @@
                 <td scope="row" class="text-center">{{$item->UH}}</td>
                 <td scope="row" class="text-center">{{$item->UAS}}</td>
             </tr>
-            @endforeach -->
+            @endforeach --}}
         </tbody>
         </table>
 </div>
