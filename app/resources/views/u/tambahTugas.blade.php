@@ -34,7 +34,11 @@
     <div class="row">
         <div class="mb-3">
             Deadline<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i> 
-            <input type="text" id="datepicker">
+            <br>
+            <div class="col-md-3">
+                <input name='deadline' type="date" id="datepicker" class="form-control border-secondary"
+                placeholder="Input Date and Time" aria-describedby="basic-addon1">
+            </div>
 
             <script src="https://cdn.jsdelivr.net/npm/flatpickr">
             
@@ -42,7 +46,7 @@
                 <script>
                     flatpickr('#datepicker', {    
                     enableTime: false, 
-                    dateFormat: "Y-m-d"
+                    dateFormat: "d-m-Y"
                 });
             </script>
         </div>
