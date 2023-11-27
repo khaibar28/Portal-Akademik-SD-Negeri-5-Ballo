@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div class="container">
-    <table class="table mt-5">
+    {{-- <table class="table mt-5">
         <thead>
             <tr>
                 <th scope="col" class="text-center">No.</th>
@@ -12,7 +12,7 @@
                 <th scope="col" class="text-center">Deadline</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> --}}
             {{-- @foreach($data as $item)
             <tr>
                 <td scope="row" class="text-center">{{$loop->iteration}}</td>
@@ -22,7 +22,7 @@
                 <td scope="row" class="text-center">{{$item->UAS}}</td>
             </tr>
             @endforeach --}}
-        </tbody>
-        </table>
+        {{-- </tbody>
+        </table> --}}
 </div>
 @endsection
