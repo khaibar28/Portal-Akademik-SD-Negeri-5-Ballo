@@ -83,7 +83,7 @@
     {{-- Tampilkan pesan jika data belum ada --}}
     <div>
       <center>
-        <img src="{{ asset('img/no_data.svg') }}" alt="" class="mt-4">
+        <img src="{{ asset('img/no_data_rekap.svg') }}" alt="" class="mt-4">
       </center>
     </div>
   @endif

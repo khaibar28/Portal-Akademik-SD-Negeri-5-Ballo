@@ -50,14 +50,14 @@
 
     {{-- buatkan if else --}}
   {{-- kalau belum ada data --}}
-  {{-- <div>
+  <div>
     <center>
         <img src="{{ asset('img/no_data.svg') }}" alt="" class="mt-4">
     </center>
-  </div> --}}
+  </div>
 
   
-    <table class="table mt-5">
+    {{-- <table class="table mt-5">
         <thead>
             <tr>
                 <th scope="col" class="text-center">No.</th>
@@ -72,6 +72,6 @@
                 <td scope="row" class="text-center">30 Februari 2024</td>
             </tr>
         </tbody>
-        </table>
+        </table> --}}
 </div>
 @endsection
