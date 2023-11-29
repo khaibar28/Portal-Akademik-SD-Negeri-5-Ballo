@@ -12,7 +12,7 @@
     @if(Route::is('setting') || Route::is('akun') || Route::is('kelas'))
     <title>Setting</title>
     @endif
-    @if(Route::is('stugas') || Route::is('tugas') || Route::is('addTugas'))
+    @if(Route::is('stugas') || Route::is('tugas') || Route::is('addTugas') || Route::is('submittugas'))
     <title>Info Tugas</title>
     @endif
     @if(Route::is('nilai'))
@@ -37,7 +37,7 @@
             |
             <li class="list-group-item" style="color: #3182FB">Dashboard</li>
           @endif
-          @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap') || Route::is('submitFilter'))
+          @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap') || Route::is('submitrekap'))
             <li class="list-group-item">Rekap Nilai</li>
             |
             <li class="list-group-item" style="color: #3182FB">Value Recap</li>
@@ -57,7 +57,7 @@
             |
             <li class="list-group-item" style="color: #3182FB">Add Data</li>
           @endif
-          @if(Route::is('stugas') || Route::is('tugas'))
+          @if(Route::is('stugas') || Route::is('tugas') || Route::is('submittugas'))
             <li class="list-group-item">Info Tugas</li>
             |
             <li class="list-group-item" style="color: #3182FB">Task Info</li>

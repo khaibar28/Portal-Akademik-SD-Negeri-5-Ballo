@@ -5,6 +5,8 @@
 
 @section('content')
 <div class="container">
+    <form action="{{ route('submittugas') }}" method="POST" id="filterForm">
+        @csrf
     <div class="row">
         <div class="col-md-3">
             Tahun Ajaran/Semester<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i> 
@@ -14,7 +16,7 @@
                 <option value="2">2023/Genap</option>
                 <option value="3">2022/Ganjil</option>
             </select>
-    </div>
+        </div>
     <div class="col-md-2">
             Kelas<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i>
             <select class="form-select btn-primary border-secondary" aria-label="Default select example" >
@@ -36,17 +38,15 @@
                 <option value="3">IPA</option>
             </select>
     </div>
+    <div class="col-md-2"></div>
     <div class="col-md-2">
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-    <div class="col-md-2">
-      <br>
-
-      <a href="{{ route('addTugas') }}" type="button" class="btn btn-outline-dark ms-4"><i class="fa-solid fa-plus me-2"></i>Tambahkan</a>
+      {{-- <a href="{{ route('addTugas') }}" type="button" class="btn btn-outline-dark ms-4"><i class="fa-solid fa-plus me-2"></i>Tambahkan</a> --}}
 
     </div>
   </div>
+</form>
 
     {{-- buatkan if else --}}
   {{-- kalau belum ada data --}}
