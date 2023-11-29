@@ -49,7 +49,7 @@
   {{-- kalau belum ada data --}}
   <div>
     <center>
-        <img src="{{ asset('img/no_data.svg') }}" alt="" class="mt-4">
+        <img src="{{ asset('img/no_data_tugas.svg') }}" alt="" class="mt-4">
     </center>
   </div>
 </div>
