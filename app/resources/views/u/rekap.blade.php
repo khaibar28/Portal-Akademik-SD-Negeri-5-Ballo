@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="container">
-  <form id="filterForm" method="POST" action="{{ route('submitFilter') }}">
+  <form id="filterForm" method="POST" action="{{ route('submitrekap') }}">
     @csrf
     <div class="row">
       <div class="col-md-3">
