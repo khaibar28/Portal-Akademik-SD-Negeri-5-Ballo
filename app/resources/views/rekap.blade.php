@@ -4,6 +4,8 @@
 @endsection
 @section('content')
 <div class="container">
+<form id="filterForm" method="POST" action="{{ route('srekap') }}">
+  @csrf
     <div class="row">
     <div class="col-md-2">
         Kelas<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i>
@@ -19,6 +21,8 @@
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
+  </form>
+
     <table class="table mt-5">
         <thead>
             <tr>
