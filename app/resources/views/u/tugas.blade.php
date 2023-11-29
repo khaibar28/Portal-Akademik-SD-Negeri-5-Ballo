@@ -12,30 +12,27 @@
             Tahun Ajaran/Semester<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i> 
             <select class="form-select btn-primary border-secondary" aria-label="Default select example" >
                 <option selected disabled>Pilih Tahun Pelajaran</option>
-                <option value="1">2023/Ganjil</option>
-                <option value="2">2023/Genap</option>
-                <option value="3">2022/Ganjil</option>
+                @foreach($schoolYears as $item)
+                <option value="{{ $item }}">{{ $item }}</option>
+                @endforeach
             </select>
         </div>
     <div class="col-md-2">
             Kelas<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i>
             <select class="form-select btn-primary border-secondary" aria-label="Default select example" >
                 <option selected disabled>Pilih Kelas</option>
-                <option value="1">Satu</option>
-                <option value="2">Dua</option>
-                <option value="3">Tiga</option>
-                <option value="4">Empat</option>
-                <option value="5">Lima</option>
-                <option value="6">Enam</option>
+                @foreach($grades as $item)
+                <option value="{{ $item }}">{{ $item }}</option>
+                @endforeach
             </select>
     </div>
     <div class="col-md-3">
             Pilih Mata pelajaran<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i> 
             <select class="form-select btn-primary border-secondary" aria-label="Default select example" >
                 <option selected disabled>Pilih Mata Pelajaran</option>
-                <option value="1">Matematika</option>
-                <option value="2">Bhs. Indonesia</option>
-                <option value="3">IPA</option>
+                @foreach($subjects as $item)
+                <option value="{{ $item }}">{{ $item }}</option>
+                @endforeach
             </select>
     </div>
     <div class="col-md-2"></div>
