@@ -11,7 +11,6 @@
             <a href="{{ route('addTugas') }}" type="button" class="btn btn-outline-dark ms-4"><i class="fa-solid fa-plus me-2"></i>Tambahkan</a>
         </div>
     </div>
-  </div>
 
   <table class="table mt-3">
     <thead>
@@ -56,6 +55,6 @@
             </div>
         </div>
     </div>
-
+</div>
 </div>
 @endsection
