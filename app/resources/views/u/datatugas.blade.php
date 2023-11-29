@@ -28,7 +28,7 @@
             <td scope="row">Buku Cetak Matematika Hal. 59</td>
             <td scope="row" class="text-center">30 Februari 2024</td>
             <td scope="row" class="text-center">
-                <a href=""><img src="{{ asset('img/edit.svg') }}" alt=""></a>
+                <a href="{{ route('edittugas') }}" class="btn"><img src="{{ asset('img/edit.svg') }}" alt=""></a>
                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 style=""><img src="{{ asset('img/trash.svg') }}" alt=""></button>
             </td>
