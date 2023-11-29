@@ -12,7 +12,7 @@
     @if(Route::is('setting') || Route::is('akun') || Route::is('kelas'))
     <title>Setting</title>
     @endif
-    @if(Route::is('stugas') || Route::is('tugas') || Route::is('addTugas') || Route::is('submittugas'))
+    @if(Route::is('stugas') || Route::is('tugas') || Route::is('addTugas') || Route::is('submittugas') || Route::is('edittugas'))
     <title>Info Tugas</title>
     @endif
     @if(Route::is('nilai'))
@@ -66,6 +66,11 @@
             <li class="list-group-item">Tambah Tugas</li>
             |
             <li class="list-group-item" style="color: #3182FB">Add Task</li>
+          @endif
+          @if(Route::is('edittugas'))
+            <li class="list-group-item">Edit Data</li>
+            |
+            <li class="list-group-item" style="color: #3182FB">Task Info</li>
           @endif
           @if(Route::is('nilai'))
             <li class="list-group-item">Nilai Akhir</li>
