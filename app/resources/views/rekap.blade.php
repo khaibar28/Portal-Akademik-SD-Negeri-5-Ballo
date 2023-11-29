@@ -23,7 +23,7 @@
     </div>
   </form>
 
-    <table class="table mt-5">
+    <table class="table mt-2">
         <thead>
             <tr>
                 <th scope="col" class="text-center">No.</th>
