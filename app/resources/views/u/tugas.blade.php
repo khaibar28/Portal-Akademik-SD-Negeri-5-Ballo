@@ -39,8 +39,6 @@
     <div class="col-md-2">
         <br>
         <button type="submit" class="btn btn-primary">Submit</button>
-      {{-- <a href="{{ route('addTugas') }}" type="button" class="btn btn-outline-dark ms-4"><i class="fa-solid fa-plus me-2"></i>Tambahkan</a> --}}
-
     </div>
   </div>
 </form>

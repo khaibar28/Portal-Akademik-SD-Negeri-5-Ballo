@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class RekapController extends Controller
 {
     public function read(){
-        $grades = Classes::distinct()->pluck('grade');
+        $grades = Score::where('user_id', auth()->user()->id)->distinct()->pluck('classess_id');
         $subjects = Subject::distinct()->pluck('subject');
         $schoolYears = SchoolYear::distinct()->pluck('school_year');
         return view('u/rekap', compact('grades', 'subjects', 'schoolYears'));
