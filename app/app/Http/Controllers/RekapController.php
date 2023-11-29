@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\DB;
 
 class RekapController extends Controller
 {
+    public function read(){
+        $grades = Classes::distinct()->pluck('grade');
+        $subjects = Subject::distinct()->pluck('subject');
+        $schoolYears = SchoolYear::distinct()->pluck('school_year');
+        return view('u/rekap', compact('grades', 'subjects', 'schoolYears'));
+    }
+
     public function index(Request $request)
     {
         $grades = Classes::distinct()->pluck('grade');
@@ -36,7 +43,7 @@ class RekapController extends Controller
             ->get();
         }
 
-        return view('u/rekap', compact('grades', 'subjects', 'schoolYears', 'filteredData'));
+        return view('u/datarekap', compact('grades', 'subjects', 'schoolYears', 'filteredData'));
     }
 
     public function edit()
