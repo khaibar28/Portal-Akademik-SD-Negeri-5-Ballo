@@ -22,7 +22,7 @@
         <select name='grade' class="form-select btn-primary border-secondary" aria-label="Default select example" >
           <option selected disabled>Pilih Kelas</option>
           @foreach ($grades as $grade)
-          <option value="{{ $grade }}">{{ $grade }}</option>
+          <option value="{{ $grade }}">Kelas {{ $grade }}</option>
           @endforeach
         </select>
       </div>
