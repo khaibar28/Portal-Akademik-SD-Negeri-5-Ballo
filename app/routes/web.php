@@ -49,5 +49,5 @@ Route::prefix('/u')->group(function(){
     });
 });
 
-Route::get('/rekap', [StudentController::class, 'rekap'])->name('srekap')->middleware('student');
+Route::match(['get', 'post'], '/rekap', [StudentController::class, 'rekap'])->name('srekap')->middleware('student');
 Route::get('/tugas', [StudentController::class, 'tugas'])->name('stugas')->middleware('student');
