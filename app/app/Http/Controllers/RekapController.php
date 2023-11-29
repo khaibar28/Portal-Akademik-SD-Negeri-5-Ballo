@@ -8,28 +8,47 @@ use App\Models\Classes;
 use App\Models\Score;
 use App\Models\Subject;
 use App\Models\SchoolYear;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\DB;
 
 class RekapController extends Controller
 {
     public function read(){
-        $grades = Score::where('user_id', auth()->user()->id)->distinct()->pluck('classess_id');
+        $grades = Teacher::join('classess', 'teachers.classess_id', '=', 'classess.id')
+        ->where('teachers.user_id', auth()->user()->id)
+        ->pluck('classess.grade');
         $subjects = Subject::distinct()->pluck('subject');
         $schoolYears = SchoolYear::distinct()->pluck('school_year');
         return view('u/rekap', compact('grades', 'subjects', 'schoolYears'));
     }
 
-    public function index(Request $request)
-    {
-        $grades = Classes::distinct()->pluck('grade');
-        $subjects = Subject::distinct()->pluck('subject');
-        $schoolYears = SchoolYear::distinct()->pluck('school_year');
+    public function index(Request $request) {
 
-        $filteredData = null;
-        if ($request->filled(['school_year', 'grade', 'subject'])) {
             $schoolYear = $request->input('school_year');
             $grade = $request->input('grade');
             $subject = $request->input('subject');
+
+            $request->session()->put('selectedFilters', [
+                'school_year' => $schoolYear,
+                'grade' => $grade,
+                'subject' => $subject,
+            ]);
+
+            $request->session()->put('selectedFilterData', [
+                'school_year' => $schoolYear,
+                'grade' => $grade,
+                'subject' => $subject
+          ]);
+
+            return $this->showData($request);
+    }
+
+    public function showData(Request $request){
+
+            $selectedFilteredData = $request->session()->get('selectedFilterData');
+            $schoolYear = $selectedFilteredData['school_year'];
+            $subject = $selectedFilteredData['subject'];
+            $grade = $selectedFilteredData['grade'];
 
             $filteredData = DB::table('scores')
             ->join('classess', 'scores.classess_id', '=', 'classess.id')
@@ -41,9 +60,8 @@ class RekapController extends Controller
             ->where('subjects.subject', $subject)
             ->select('scores.*', 'classess.grade', 'school_years.school_year', 'subjects.subject', 'users.name', 'users.user_number') 
             ->get();
-        }
 
-        return view('u/datarekap', compact('grades', 'subjects', 'schoolYears', 'filteredData'));
+        return view('u/datarekap',compact('filteredData'));
     }
 
     public function edit()
