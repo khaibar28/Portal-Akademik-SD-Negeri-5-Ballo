@@ -15,6 +15,7 @@ class Task extends Model
         'deadline',
         'subjects_id',
         'classess_id',
+        'school_years_id'
     ];
 
     protected $dates = ['deadline'];

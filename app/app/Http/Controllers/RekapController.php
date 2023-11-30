@@ -28,12 +28,6 @@ class RekapController extends Controller
             $grade = $request->input('grade');
             $subject = $request->input('subject');
 
-            $request->session()->put('selectedFilters', [
-                'school_year' => $schoolYear,
-                'grade' => $grade,
-                'subject' => $subject,
-            ]);
-
             $request->session()->put('selectedFilterData', [
                 'school_year' => $schoolYear,
                 'grade' => $grade,
