@@ -20,4 +20,9 @@ class Classes extends Model
     {
         return $this->hasMany(Task::class, 'classess_id');
     }
+
+    public function teacher()
+    {
+        return $this->hasMany(teacher::class);
+    }
 }

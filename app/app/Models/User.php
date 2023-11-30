@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Score::class);
     }
+
+    public function teacher()
+    {
+        return $this->hasMany(teacher::class);
+    }
 }
