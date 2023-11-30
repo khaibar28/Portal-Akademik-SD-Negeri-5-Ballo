@@ -58,8 +58,23 @@ class RekapController extends Controller
         return view('u/datarekap',compact('filteredData'));
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('u/editrekap');
+            $selectedFilteredData = $request->session()->get('selectedFilterData');
+            $schoolYear = $selectedFilteredData['school_year'];
+            $subject = $selectedFilteredData['subject'];
+            $grade = $selectedFilteredData['grade'];
+
+            $filteredData = DB::table('scores')
+            ->join('classess', 'scores.classess_id', '=', 'classess.id')
+            ->join('school_years', 'scores.school_years_id', '=', 'school_years.id')
+            ->join('subjects', 'scores.subjects_id', '=', 'subjects.id')
+            ->join('users', 'scores.user_id', '=', 'users.id') 
+            ->where('classess.grade', $grade)
+            ->where('school_years.school_year', $schoolYear)
+            ->where('subjects.subject', $subject)
+            ->select('scores.*', 'classess.grade', 'school_years.school_year', 'subjects.subject', 'users.name', 'users.user_number') 
+            ->get();
+        return view('u/editrekap', compact('filteredData'));
     }
 }

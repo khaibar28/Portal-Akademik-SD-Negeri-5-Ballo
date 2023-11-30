@@ -1,6 +1,16 @@
 @extends('layout/sidebar')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/u/rekap.css') }}">
+<style>
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+</style>
 @endsection
 
 @section('content')
@@ -33,15 +43,6 @@
     </div>
   </div>
 
-  {{-- buatkan if else --}}
-  {{-- kalau belum ada data --}}
-  {{-- <div>
-    <center>
-        <img src="{{ asset('img/no_data.svg') }}" alt="" class="mt-4">
-    </center>
-  </div> --}}
-
-  {{-- kalau sudah ada data --}}
   <table class="table mt-3">
     <thead>
         <tr>
@@ -54,14 +55,16 @@
         </tr>
     </thead>
     <tbody>
+      @foreach($filteredData as $item)
         <tr>
-            <td scope="row" class="text-center">1</td>
-            <td scope="row">Dzacky</td>
-            <td scope="row" class="text-center">12345678</td>
-            <td scope="row" class="text-center"><input type="text" style="width: 20%"></td>
-            <td scope="row" class="text-center"><input type="text" style="width: 20%"></td>
-            <td scope="row" class="text-center"><input type="text" style="width: 20%"></td>
+            <td scope="row" class="text-center">{{ $loop->iteration }}</td>
+            <td scope="row">{{ $item->name }}</td>
+            <td scope="row" class="text-center">{{ $item->user_number }}</td>
+            <td scope="row" class="text-center" style="width: 15%"><input type="number" min="0" style="width: 25%"></td>
+            <td scope="row" class="text-center" style="width: 15%"><input type="number" min="0" style="width: 25%"></td>
+            <td scope="row" class="text-center" style="width: 15%"><input type="number" min="0" style="width: 25%"></td>
         </tr>
+        @endforeach
     </tbody>
     </table>
 </div>
