@@ -60,9 +60,9 @@ input[type=number] {
             <td scope="row" class="text-center">{{ $loop->iteration }}</td>
             <td scope="row">{{ $item->name }}</td>
             <td scope="row" class="text-center">{{ $item->user_number }}</td>
-            <td scope="row" class="text-center" style="width: 15%"><input type="number" min="0" style="width: 25%"></td>
-            <td scope="row" class="text-center" style="width: 15%"><input type="number" min="0" style="width: 25%"></td>
-            <td scope="row" class="text-center" style="width: 15%"><input type="number" min="0" style="width: 25%"></td>
+            <td scope="row" class="text-center" style="width: 15%"><input class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->task_score }}"></td>
+            <td scope="row" class="text-center" style="width: 15%"><input class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->UH }}"></td>
+            <td scope="row" class="text-center" style="width: 15%"><input class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->UAS }}"></td>
         </tr>
         @endforeach
     </tbody>
