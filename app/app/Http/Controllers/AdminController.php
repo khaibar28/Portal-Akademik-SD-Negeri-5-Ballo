@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Score;
 use App\Models\Subject;
 use App\Models\SchoolYear;
+use App\Models\Teacher;
 
 class AdminController extends Controller
 {
@@ -43,28 +44,40 @@ class AdminController extends Controller
         $class = Classes::where('grade', $data['grade'])
             ->first();
 
-        $user = User::where('user_number', $data['user_number'])
-            ->where('role', 'student')
-            ->first();
+        $user = User::where('user_number', $data['user_number']) ->first();
 
         if (!$class || !$user) {
             return redirect()->back()->with('error', 'Data not found. Please check your selections.');
         }
 
-        $subjects = Subject::all();
+        if ($user->role === 'student') {
+          
+            $subjects = Subject::all();
 
-        foreach ($subjects as $subject) {
-            $scoreData = [
-                'classess_id' => $class->id,
-                'user_id' => $user->id,
-                'subjects_id' => $subject->id,
-                'school_years_id' => $schoolYear->id
+            foreach ($subjects as $subject) {
+                $scoreData = [
+                    'classess_id' => $class->id,
+                    'user_id' => $user->id,
+                    'subjects_id' => $subject->id,
+                    'school_years_id' => $schoolYear->id
+                ];
+    
+                Score::create($scoreData);
+            }
+    
+            return redirect()->route('setting')->with('success', 'Scores created successfully');
+       
+        }elseif ($user->role === 'teacher') {
+
+            $teacherData = [
+                'classess_id'=> $class->id,
+                'user_id' => $user->id
             ];
 
-            Score::create($scoreData);
+                Teacher::create($teacherData);
+                return redirect()->route('setting')->with('success', 'Scores created successfully');       
         }
-
-        return redirect()->route('setting')->with('success', 'Scores created successfully');
+       
     }
 
     public function addAkun(Request $request){

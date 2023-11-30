@@ -25,6 +25,7 @@
         </tr>
       </thead>
       <tbody>
+        
         @foreach($filteredData as $index => $data)
           <tr>
             <td scope="row" class="text-center">{{ $index + 1 }}</td>
