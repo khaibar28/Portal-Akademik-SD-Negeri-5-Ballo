@@ -26,7 +26,7 @@
      @foreach($filteredData as $index => $data)
         <tr>
             <td scope="row" class="text-center">{{ $index + 1 }}</td>
-            <td scope="row">{{ $data->task_description}} </td>
+            <td scope="row">{{ strip_tags($data->task_description)}} </td>
             <td scope="row" class="text-center">{{ $data->deadline}} </td>
             <td scope="row" class="text-center">
                 <a href="{{ route('edittugas') }}" class="btn"><img src="{{ asset('img/edit.svg') }}" alt=""></a>
