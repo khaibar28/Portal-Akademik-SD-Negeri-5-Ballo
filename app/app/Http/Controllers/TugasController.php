@@ -100,7 +100,8 @@ class TugasController extends Controller
     }
 
 
-    public function edit(){
-        return view('u/edittugas');
+    public function edit($id){
+        $data = Task::find($id);
+        return view('u/edittugas', compact('data'));
     }
 }
