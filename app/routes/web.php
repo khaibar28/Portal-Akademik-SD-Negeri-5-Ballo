@@ -37,7 +37,7 @@ Route::prefix('/u')->group(function(){
         Route::post('/submit-filter', [TugasController::class, 'index'])->name('submittugas')->middleware('teacher');
         Route::get('/add', [TugasController::class, 'add'])->name('addTugas')->middleware('teacher');
         Route::post('/add', [TugasController::class, 'store'])->name('addTugas.store')->middleware('teacher');
-        Route::get('/edit', [TugasController::class, 'edit'])->name('edittugas')->middleware('teacher');
+        Route::get('/edit/{id}', [TugasController::class, 'edit'])->name('edittugas')->middleware('teacher');
     });
     Route::prefix('/nilai')->group(function(){
         Route::get('/', [NilaiController::class, 'readNilai'])->name('nilai')->middleware('teacher');

@@ -29,7 +29,7 @@
             <td scope="row">{{ strip_tags($data->task_description)}} </td>
             <td scope="row" class="text-center">{{ $data->deadline}} </td>
             <td scope="row" class="text-center">
-                <a href="{{ route('edittugas') }}" class="btn"><img src="{{ asset('img/edit.svg') }}" alt=""></a>
+                <a href="{{ route('edittugas', $data->id) }}" class="btn"><img src="{{ asset('img/edit.svg') }}" alt=""></a>
                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
                 style=""><img src="{{ asset('img/trash.svg') }}" alt=""></button>
             </td>
