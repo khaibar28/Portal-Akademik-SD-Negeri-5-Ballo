@@ -19,7 +19,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
-    {{-- <table class="table mt-5">
+    <table class="table mt-2">
         <thead>
             <tr>
                 <th scope="col" class="text-center">No.</th>
@@ -27,17 +27,13 @@
                 <th scope="col" class="text-center">Deadline</th>
             </tr>
         </thead>
-        <tbody> --}}
-            {{-- @foreach($data as $item)
+        <tbody>
             <tr>
-                <td scope="row" class="text-center">{{$loop->iteration}}</td>
-                <td scope="row" class="text-center">{{$item->subject->subject}}</td>
-                <td scope="row" class="text-center">{{$item->task_score}}</td>
-                <td scope="row" class="text-center">{{$item->UH}}</td>
-                <td scope="row" class="text-center">{{$item->UAS}}</td>
+                <td scope="row" class="text-center">1</td>
+                <td scope="row" class="text-center">Tugas 1</td>
+                <td scope="row" class="text-center">Besok</td>
             </tr>
-            @endforeach --}}
-        {{-- </tbody>
-        </table> --}}
+        </tbody>
+        </table>
 </div>
 @endsection
