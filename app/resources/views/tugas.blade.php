@@ -4,14 +4,16 @@
 @endsection
 @section('content')
 <div class="container">
+    <form id="filterForm" method="POST" action="{{ route('stugas') }}">
+        @csrf
     <div class="row">
         <div class="col-md-2">
             Kelas<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i>
             <select name='grade' class="form-select btn-primary border-secondary" aria-label="Default select example" >
               <option selected disabled>Pilih Kelas</option>
-              {{-- @foreach ($dataClass as $item)
+              @foreach ($dataClass as $item)
               <option value="{{ $item }}">Kelas {{ $item }}</option>
-              @endforeach --}}
+              @endforeach
             </select>
           </div>
           <div class="col-md-2">
@@ -19,6 +21,8 @@
             <button type="submit" class="btn btn-primary">Submit</button>
           </div>
         </div>
+  </form>
+
     <table class="table mt-2">
         <thead>
             <tr>
@@ -28,11 +32,13 @@
             </tr>
         </thead>
         <tbody>
+            @foreach($dataScore as $item)
             <tr>
-                <td scope="row" class="text-center">1</td>
-                <td scope="row" class="text-center">Tugas 1</td>
-                <td scope="row" class="text-center">Besok</td>
+                <td scope="row" class="text-center">{{ $loop->iteration }}</td>
+                <td scope="row" class="text-center">{{ strip_tags($item->task_description) }}</td>
+                <td scope="row" class="text-center">{{ $item->deadline }}</td>
             </tr>
+            @endforeach
         </tbody>
         </table>
 </div>
