@@ -1,16 +1,20 @@
 @extends('layout/sidebar')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/u/rekap.css') }}">
+<link rel="stylesheet" href="{{ asset('css/u/breadcrump.css') }}">
 @endsection
 
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md-2">{{ $dataYear }}</div>
-    <div class="col-md-1" style="color: #3182FB" >|</div>
-    <div class="col-md-2">{{ $dataGrade }}</div>
-    <div class="col-md-1" style="color: #3182FB">|</div>
-    <div class="col-md-2">{{ $dataSubject }}</div>
+    <div class="col-md-6">
+      <ul class="breadcrumb">
+      <li><a href="#">{{ $dataYear }}</a><span class="separator"> | </span></li>
+      <li><a href="#">Kelas 3</a><span class="separator"> | </span></li>
+      <li><a href="#">{{ $dataSubject }}</a><span class="separator"> | </span></li>
+    </ul>
+    </div>
+    <div class="col-md-2"></div>
     <div class="col-md-2"></div>
     <div class="col-md-2">
       <a href="{{ route('editrekap') }}" type="button" class="btn btn-warning ms-4">Edit Data</a>
