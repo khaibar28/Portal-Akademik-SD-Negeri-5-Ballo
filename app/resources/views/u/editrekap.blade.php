@@ -1,6 +1,7 @@
 @extends('layout/sidebar')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/u/rekap.css') }}">
+<link rel="stylesheet" href="{{ asset('css/u/breadcrump.css') }}">
 <style>
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
@@ -16,7 +17,15 @@ input[type=number] {
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-md-10"></div>
+    <div class="col-md-6">
+      <ul class="breadcrumb">
+          <li>{{ $schoolYear }}<span class="separator"> | </span></li>
+          <li>{{ $grade }}<span class="separator"> | </span></li>
+          <li>{{ $subject }}<span class="separator"> | </span></li>
+      </ul>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-2"></div>
     <div class="col-md-2">
       <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning ms-4" style="box-shadow: 0px 4px 4px 0px #00000040;
             border-radius: 12px">Konfirmasi</button>
