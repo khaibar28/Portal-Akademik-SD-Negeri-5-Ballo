@@ -14,4 +14,8 @@ class NilaiController extends Controller
 
         return view("u/nilai",compact("grades","schoolYears"));
     }
+
+    public function index(){
+        return view('u/datanilai');
+    }
 }
