@@ -28,6 +28,7 @@
             <tr>
                 <th scope="col" class="text-center">No.</th>
                 <th scope="col" class="text-center">Tugas</th>
+                <th scope="col" class="text-center">Mata Pelajaran</th>
                 <th scope="col" class="text-center">Deadline</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
             <tr>
                 <td scope="row" class="text-center">{{ $loop->iteration }}</td>
                 <td scope="row" class="text-center">{{ strip_tags($item->task_description) }}</td>
+                <td scope="row" class="text-center">{{ $item->subject->subject }}</td>
                 <td scope="row" class="text-center">{{ $item->deadline }}</td>
             </tr>
             @endforeach

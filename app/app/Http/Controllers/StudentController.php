@@ -64,6 +64,7 @@ class StudentController extends Controller
                         ->orderBy('classess_id', 'desc')
                         ->limit(1);
                 })
+                ->orderBy('deadline', 'asc')
                 ->get();
 
                 return view('tugas', compact('dataClass', 'dataScore'));
