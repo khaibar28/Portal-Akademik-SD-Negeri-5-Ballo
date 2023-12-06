@@ -70,11 +70,12 @@ input[type=number] {
         <tr>
             <td scope="row" class="text-center">{{ $loop->iteration }}</td>
             <td scope="row">{{ $item->name }}</td>
-            <td scope="row" class="text-center"><input type='hidden' name='user_number[]' value='{{ $item->user_number }}'></td>
+            <td scope="row" class="text-center">{{ $item->user_number }}</td>
             <td scope="row" class="text-center" style="width: 15%"><input name='task_score[]'class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->task_score }}"></td>
             <td scope="row" class="text-center" style="width: 15%"><input name='UH[]'class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->UH }}"></td>
             <td scope="row" class="text-center" style="width: 15%"><input name='UAS[]' class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->UAS }}"></td>
         </tr>
+        <input type='hidden' name='user_number[]' value='{{ $item->user_number }}'>
         @endforeach
     </tbody>
     </table>
