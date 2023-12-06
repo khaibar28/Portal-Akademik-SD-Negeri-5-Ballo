@@ -6,7 +6,7 @@
     @if(Route::is('home'))
     <title>Home</title>
     @endif
-    @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap') || Route::is('submitrekap'))
+    @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap') || Route::is('submitrekap') || Route::is('rekap.store'))
     <title>Rekap Nilai</title>
     @endif
     @if(Route::is('setting') || Route::is('akun') || Route::is('kelas'))
@@ -37,7 +37,7 @@
             |
             <li class="list-group-item" style="color: #3182FB">Dashboard</li>
           @endif
-          @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap') || Route::is('submitrekap'))
+          @if(Route::is('rekap') || Route::is('srekap') || Route::is('editrekap') || Route::is('submitrekap') || Route::is('rekap.store'))
             <li class="list-group-item">Rekap Nilai</li>
             |
             <li class="list-group-item" style="color: #3182FB">Value Recap</li>
