@@ -43,6 +43,10 @@ class TugasController extends Controller
             $subject = $selectedFilteredData['subject'];
             $grade = $selectedFilteredData['grade'];
 
+            $dataYear = $request->input('school_year');
+            $dataSubject = $request->input('subject');
+            $dataGrade = $request->input('grade');
+
             $filteredData = DB::table('tasks')
             ->join('classess', 'tasks.classess_id', '=', 'classess.id')
             ->join('school_years', 'tasks.school_years_id', '=', 'school_years.id')
@@ -53,7 +57,7 @@ class TugasController extends Controller
             ->select('tasks.*', 'classess.grade', 'school_years.school_year', 'subjects.subject')
             ->get();
 
-            return view('u/datatugas',compact('filteredData'));
+            return view('u/datatugas',compact('filteredData', 'dataYear', 'dataSubject', 'dataGrade'));
 
     }
 

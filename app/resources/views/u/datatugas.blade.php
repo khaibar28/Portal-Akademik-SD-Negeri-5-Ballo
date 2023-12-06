@@ -9,9 +9,9 @@
     <div class="row">
         <div class="col-md-6">
             <ul class="breadcrumb">
-                <li><a href="#">2023 / Genap</a><span class="separator"> | </span></li>
-                <li><a href="#">Kelas 2</a><span class="separator"> | </span></li>
-                <li><a href="#">Matematika</a><span class="separator"> | </span></li>
+                <li><a href="#">{{ $dataYear }}</a><span class="separator"> | </span></li>
+                <li><a href="#">{{ $dataGrade }}</a><span class="separator"> | </span></li>
+                <li><a href="#">{{ $dataSubject }}</a><span class="separator"> | </span></li>
             </ul>
         </div>
         <div class="col-md-2"></div>
