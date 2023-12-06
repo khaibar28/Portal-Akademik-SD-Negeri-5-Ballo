@@ -22,7 +22,6 @@ class StudentController extends Controller
                     ->from('scores')
                     ->where('user_id', auth()->user()->id)
                     ->where('classess_id', $grade)->first();
-
             })
             ->get();
 

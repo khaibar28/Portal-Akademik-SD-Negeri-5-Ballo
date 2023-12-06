@@ -15,13 +15,15 @@ input[type=number] {
 @endsection
 
 @section('content')
+<form id="filter" method="POST" action="{{ route('rekap.store') }}">
+@csrf
 <div class="container">
   <div class="row">
     <div class="col-md-6">
       <ul class="breadcrumb">
-          <li>{{ $schoolYear }}<span class="separator"> | </span></li>
-          <li>{{ $grade }}<span class="separator"> | </span></li>
-          <li>{{ $subject }}<span class="separator"> | </span></li>
+          <li>{{ $schoolYear->school_year }}<span class="separator"> | </span></li>
+          <li>{{ $grade->grade }}<span class="separator"> | </span></li>
+          <li>{{ $subject->subject }}<span class="separator"> | </span></li>
       </ul>
   </div>
   <div class="col-md-2"></div>
@@ -31,7 +33,7 @@ input[type=number] {
             border-radius: 12px">Konfirmasi</button>
     </div>
   </div>
-  
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -68,13 +70,14 @@ input[type=number] {
         <tr>
             <td scope="row" class="text-center">{{ $loop->iteration }}</td>
             <td scope="row">{{ $item->name }}</td>
-            <td scope="row" class="text-center">{{ $item->user_number }}</td>
-            <td scope="row" class="text-center" style="width: 15%"><input class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->task_score }}"></td>
-            <td scope="row" class="text-center" style="width: 15%"><input class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->UH }}"></td>
-            <td scope="row" class="text-center" style="width: 15%"><input class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->UAS }}"></td>
+            <td scope="row" class="text-center"><input type='hidden' name='user_number[]' value='{{ $item->user_number }}'></td>
+            <td scope="row" class="text-center" style="width: 15%"><input name='task_score[]'class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->task_score }}"></td>
+            <td scope="row" class="text-center" style="width: 15%"><input name='UH[]'class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->UH }}"></td>
+            <td scope="row" class="text-center" style="width: 15%"><input name='UAS[]' class="text-center" type="number" min="0" style="width: 25%" value="{{ $item->UAS }}"></td>
         </tr>
         @endforeach
     </tbody>
     </table>
 </div>
+</form>
 @endsection

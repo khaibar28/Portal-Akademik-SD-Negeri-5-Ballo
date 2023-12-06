@@ -31,6 +31,7 @@ Route::prefix('/u')->group(function(){
         Route::get('/', [RekapController::class, 'read'])->name('rekap')->middleware('teacher');
         Route::post('/submit-filter', [RekapController::class, 'index'])->name('submitrekap')->middleware('teacher');
         Route::get('/edit', [RekapController::class, 'edit'])->name('editrekap')->middleware('teacher');
+        Route::post('/edit', [RekapController::class, 'store'])->name('rekap.store')->middleware('teacher');
     });
     Route::prefix('/tugas')->group(function(){
         Route::get('/', [TugasController::class, 'read'])->name('tugas')->middleware('teacher');

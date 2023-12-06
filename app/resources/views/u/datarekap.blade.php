@@ -9,10 +9,10 @@
   <div class="row">
     <div class="col-md-6">
       <ul class="breadcrumb">
-      <li>{{ $schoolYear }}<span class="separator"> | </span></li>
-      <li>{{ $grade }}<span class="separator"> | </span></li>
-      <li>{{ $subject }}<span class="separator"> | </span></li>
-    </ul> 
+      <li>{{ $schoolYear->school_year }}<span class="separator"> | </span></li>
+      <li>{{ $grade->grade }}<span class="separator"> | </span></li>
+      <li>{{ $subject->subject }}<span class="separator"> | </span></li>
+    </ul>
     </div>
     <div class="col-md-2"></div>
     <div class="col-md-2"></div>
@@ -34,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        
+
         @foreach($filteredData as $index => $data)
           <tr>
             <td scope="row" class="text-center">{{ $index + 1 }}</td>
