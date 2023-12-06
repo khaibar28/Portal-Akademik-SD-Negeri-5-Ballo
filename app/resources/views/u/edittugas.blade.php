@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <form id="filter" method="POST" action="{{ route('addTugas.store') }}">
+    <form id="filter" method="POST" action="{{ route('editTugas.store',['id'=> $data->id]) }}">
         <div class="container">
             @csrf
             <div class="row">
