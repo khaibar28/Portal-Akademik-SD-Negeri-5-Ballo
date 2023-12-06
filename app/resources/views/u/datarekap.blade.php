@@ -44,9 +44,7 @@
             <td scope="row" class="text-center">{{ $data->UH }}</td>
             <td scope="row" class="text-center">{{ $data->UAS }}</td>
             <td scope="row" class="text-center">
-              {{-- perlu diperabiki utk trigger modal + blm buat modal --}}
-              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                      style=""><img src="{{ asset('img/trash.svg') }}" alt="">
+              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="{{ asset('img/trash.svg') }}" alt="">
               </button>
             </td>
           </tr>

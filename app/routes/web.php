@@ -42,6 +42,7 @@ Route::prefix('/u')->group(function(){
     });
     Route::prefix('/nilai')->group(function(){
         Route::get('/', [NilaiController::class, 'readNilai'])->name('nilai')->middleware('teacher');
+        Route::post('/submit-filter', [NilaiController::class, 'index'])->name('submitnilai')->middleware('teacher');
     });
     Route::prefix('/setting')->group(function(){
         Route::get('/', [AdminController::class, 'read'])->name('setting')->middleware('admin');

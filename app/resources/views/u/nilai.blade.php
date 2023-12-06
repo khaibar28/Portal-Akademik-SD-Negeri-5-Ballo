@@ -4,7 +4,8 @@
 @endsection
 @section('content')
 <div class="container">
-  <form action="" method="POST">
+  <form id="filterForm" method="POST" action="{{ route('submitnilai') }}">
+    @csrf
   <div class="row">
     <div class="col-md-3">
       Tahun Ajaran/Semester<i class="fa-solid fa-asterisk fa-2xs" style="color: #f60000;"></i>
@@ -24,35 +25,17 @@
        @endforeach
         </select>
     </div>
-    <div class="col-md-3"></div>
-    <div class="col-md-2"></div>
+    <div class="col-md-5"></div>
     <div class="col-md-2">
       <br>
-      @can('admin')
-      <button type="submit" class="btn btn-primary ms-2">Konfirmasi</button>
-      @endcan
+      <button type="submit" class="btn btn-primary ms-2">Submit</button>
     </div>
   </div>
-  <table class="table mt-5">
-        <thead>
-            <tr>
-                <th scope="col" class="text-center">No.</th>
-                <th scope="col" class="text-center">Nama Siswa</th>
-                <th scope="col" class="text-center">Nilai</th>
-                <th scope="col" class="text-center">Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td scope="row" class="text-center">1</td>
-                <td scope="row">Dzacky</td>
-                <td scope="row" class="text-center">90</td>
-                <td scope="row" class="text-center">Cumlaude</td>
-
-            </tr>
-        </tbody>
-        </table>
-
-</form>
+  </form>
+  <div>
+    <center>
+      <img src="{{ asset('img/no_data_rekap.svg') }}" alt="" class="mt-4">
+    </center>
+  </div>
 </div>
 @endsection
