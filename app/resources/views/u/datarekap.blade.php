@@ -10,7 +10,7 @@
     <div class="col-md-6">
       <ul class="breadcrumb">
       <li><a href="#">{{ $dataYear }}</a><span class="separator"> | </span></li>
-      <li><a href="#">Kelas 3</a><span class="separator"> | </span></li>
+      <li><a href="#">{{ $dataGrade }}</a><span class="separator"> | </span></li>
       <li><a href="#">{{ $dataSubject }}</a><span class="separator"> | </span></li>
     </ul>
     </div>
