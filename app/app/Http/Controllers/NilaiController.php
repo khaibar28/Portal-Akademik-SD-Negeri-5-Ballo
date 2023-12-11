@@ -20,7 +20,6 @@ class NilaiController extends Controller
 
     public function index(Request $request){
 
-        dd($request->all());
         $schoolYear = $request->input('school_year');
         $grade = $request->input('grade');
 
@@ -38,9 +37,29 @@ class NilaiController extends Controller
         $schoolYear = SchoolYear::where('school_year', $selectedFilteredData['school_year'])->first();
         $grade = Classes::where('grade', $selectedFilteredData['grade'])->first();
 
+        $query = "
+    SELECT nama, user_number, ROUND(((task_score + UH + UAS)/3), 2) AS nilai_akhir, case
+    when ROUND(((task_score + UH + UAS)/3),2) > 70 then 'Lulus'
+    ELSE 'Tidak Lulus'
+    END AS status
+    FROM (
+        SELECT nama, user_number, AVG(COALESCE(task_score, 0)) AS task_score, AVG(COALESCE(UH, 0)) AS UH, AVG(COALESCE(UAS, 0)) AS UAS
+        FROM (
+            SELECT users.name AS nama, users.user_number AS user_number, scores.task_score AS task_score, scores.UH AS UH, scores.UAS AS UAS
+            FROM scores
+            JOIN users ON scores.user_id = users.id
+            JOIN school_years ON scores.school_years_id = school_years.id
+            JOIN classess ON scores.classess_id = classess.id
+            WHERE school_years.school_year = '$schoolYear->school_year' AND classess.grade = '$grade->grade'
+        ) AS f
+        GROUP BY user_number
+    ) AS t
+    ORDER BY nama
+";
 
+$results = DB::select($query);
 
-    return view('u/datanilai',compact('filteredData', 'schoolYear','grade'));
+    return view('u/datanilai',compact( 'results','schoolYear','grade'));
 }
 
 }

@@ -31,12 +31,12 @@
       </tr>
     </thead>
     <tbody>
-        @foreach($filteredData as $index => $data)
+        @foreach($results as $index => $data)
         <tr>
           <td scope="row" class="text-center">{{ $index + 1 }}</td>
           <td scope="row">{{ $data->nama }}</td>
           <td scope="row" class="text-center">{{ $data->nilai_akhir}}</td>
-          <td scope="row" class="text-center">cumlaude</td>
+          <td scope="row" class="text-center">{{ $data->status}}</td>
         </tr>
         @endforeach
     </tbody>
