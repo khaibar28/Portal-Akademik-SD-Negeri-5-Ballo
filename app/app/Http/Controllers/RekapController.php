@@ -15,12 +15,19 @@ use Illuminate\Support\Facades\DB;
 class RekapController extends Controller
 {
     public function read(){
+        if (auth()->user()->role === 'teacher'){
         $grades = Teacher::join('classess', 'teachers.classess_id', '=', 'classess.id')
         ->where('teachers.user_id', auth()->user()->id)
         ->pluck('classess.grade');
         $subjects = Subject::distinct()->pluck('subject');
         $schoolYears = SchoolYear::distinct()->pluck('school_year');
         return view('u/rekap', compact('grades', 'subjects', 'schoolYears'));
+        }else{
+        $grades = Classes::distinct()->pluck('grade');
+        $subjects = Subject::distinct()->pluck('subject');
+        $schoolYears = SchoolYear::distinct()->pluck('school_year');
+        return view('u/rekap', compact('grades', 'subjects', 'schoolYears'));
+        }
     }
 
     public function index(Request $request) {
