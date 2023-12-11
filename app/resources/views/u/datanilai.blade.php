@@ -8,9 +8,8 @@
   <div class="row">
     <div class="col-md-6">
         <ul class="breadcrumb">
-        {{-- <li>{{ $schoolYear->school_year }}<span class="separator"> | </span></li> --}}
-        {{-- <li>{{ $grade->grade }}<span class="separator"> | </span></li> --}}
-        {{-- <li>{{ $subject->subject }}<span class="separator"> | </span></li> --}}
+         <li>{{ $schoolYear->school_year }}<span class="separator"> | </span></li>
+         <li>{{ $grade->grade }}<span class="separator"> | </span></li>
       </ul>
       </div>
       <div class="col-md-2"></div>
@@ -32,12 +31,14 @@
       </tr>
     </thead>
     <tbody>
+        @foreach($results as $index => $data)
         <tr>
-          <td scope="row" class="text-center">1</td>
-          <td scope="row">amoy</td>
-          <td scope="row" class="text-center">10</td>
-          <td scope="row" class="text-center">cumlaude</td>
+          <td scope="row" class="text-center">{{ $index + 1 }}</td>
+          <td scope="row">{{ $data->nama }}</td>
+          <td scope="row" class="text-center">{{ $data->nilai_akhir}}</td>
+          <td scope="row" class="text-center">{{ $data->status}}</td>
         </tr>
+        @endforeach
     </tbody>
   </table>
 </div>
