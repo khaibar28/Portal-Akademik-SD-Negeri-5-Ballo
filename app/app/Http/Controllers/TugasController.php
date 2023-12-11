@@ -100,8 +100,19 @@ class TugasController extends Controller
     }
 
 
-    public function edit($id){
+    public function showedit($id){
         $data = Task::find($id);
         return view('u/edittugas', compact('data'));
+    }
+
+    public function edit($id, Request $request){
+        $task = Task::find($id);
+
+        $formattedDeadline = Carbon::createFromFormat('d-m-Y', $request->input('deadline'))->format('Y-m-d');
+        $task->task_description = $request->input('task_description');
+        $task->deadline = $formattedDeadline;
+        $task->save();
+
+        return redirect()->route('tugas')->with('success','Berhasil diperbaharui');
     }
 }
