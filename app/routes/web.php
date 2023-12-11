@@ -18,7 +18,7 @@ use App\Http\Controllers\NilaiController;
 |
 */
 
-Route::get('/login', [UserController::class, 'index'])->name('index')->middleware('guest');
+Route::get('/', [UserController::class, 'index'])->name('index')->middleware('guest');
 Route::post('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
 
