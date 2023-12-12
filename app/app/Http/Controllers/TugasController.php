@@ -14,15 +14,28 @@ use Carbon\Carbon;
 class TugasController extends Controller
 {
     public function read(){
+        if (auth()->user()->role === 'teacher'){
         $grades = Teacher::join('classess', 'teachers.classess_id', '=', 'classess.id')
         ->where('teachers.user_id', auth()->user()->id)
         ->pluck('classess.grade');
         $subjects = Subject::distinct()->pluck('subject');
         $schoolYears = SchoolYear::distinct()->pluck('school_year');
         return view('u/tugas', compact('grades', 'subjects', 'schoolYears'));
+        }else{
+        $subjects = Subject::distinct()->pluck('subject');
+        $schoolYears = SchoolYear::distinct()->pluck('school_year');
+        $grades = Classes::distinct()->pluck('grade');
+        return view('u/tugas', compact('grades', 'subjects', 'schoolYears'));
+        }
     }
 
     public function index(Request $request){
+
+        $request->validate([
+            'school_year' => 'required|string',
+            'grade' => 'required|string',
+            'subject' => 'required|string',
+        ]);
 
         $schoolYear = $request->input('school_year');
         $grade = $request->input('grade');

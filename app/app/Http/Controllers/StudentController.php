@@ -15,6 +15,11 @@ class StudentController extends Controller
         $dataClass = Score::where('user_id', auth()->user()->id)->distinct()->pluck('classess_id');
 
         if ($request->isMethod('post')) {
+
+            $request->validate([
+                'grade' => 'required|string',
+            ]);
+
             $grade = $request->input('grade');
 
             $dataScore = Score::where('user_id', auth()->user()->id)->where('classess_id', function ($query) use($grade) {
