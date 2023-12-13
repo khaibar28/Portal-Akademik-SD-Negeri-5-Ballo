@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Classes;
 use App\Models\SchoolYear;
+use App\Models\Teacher;
 use App\Models\User;
 use App\Models\Score;
 use Illuminate\Support\Facades\DB;
@@ -12,13 +13,27 @@ use Illuminate\Support\Facades\DB;
 class NilaiController extends Controller
 {
     public function readNilai(){
-        $grades = Classes::distinct()->pluck('grade');
-        $schoolYears = SchoolYear::distinct()->pluck('school_year');
 
-        return view("u/nilai",compact('grades','schoolYears'));
+        if (auth()->user()->role === 'teacher'){
+            $grades = Teacher::join('classess', 'teachers.classess_id', '=', 'classess.id')
+            ->where('teachers.user_id', auth()->user()->id)
+            ->pluck('classess.grade');
+            $schoolYears = SchoolYear::distinct()->pluck('school_year');
+            return view("u/nilai",compact('grades','schoolYears'));
+        }else{
+            $grades = Classes::distinct()->pluck('grade');
+            $schoolYears = SchoolYear::distinct()->pluck('school_year');
+            return view("u/nilai",compact('grades','schoolYears'));
+        }
+
     }
 
     public function index(Request $request){
+
+        $request->validate([
+            'school_year' => 'required|string',
+            'grade' => 'required|string',
+        ]);
 
         $schoolYear = $request->input('school_year');
         $grade = $request->input('grade');
@@ -39,7 +54,7 @@ class NilaiController extends Controller
 
         $query = "
     SELECT nama, user_number, ROUND(((task_score + UH + UAS)/3), 2) AS nilai_akhir, case
-    when ROUND(((task_score + UH + UAS)/3),2) > 70 then 'Lulus'
+    when ROUND(((task_score + UH + UAS)/3),2) > 80 then 'Lulus'
     ELSE 'Tidak Lulus'
     END AS status
     FROM (

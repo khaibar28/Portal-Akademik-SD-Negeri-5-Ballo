@@ -32,6 +32,12 @@ class RekapController extends Controller
 
     public function index(Request $request) {
 
+            $request->validate([
+                'school_year' => 'required|string',
+                'grade' => 'required|string',
+                'subject' => 'required|string',
+            ]);
+
             $schoolYear = $request->input('school_year');
             $grade = $request->input('grade');
             $subject = $request->input('subject');
