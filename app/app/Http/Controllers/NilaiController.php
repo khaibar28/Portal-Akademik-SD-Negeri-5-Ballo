@@ -54,7 +54,7 @@ class NilaiController extends Controller
 
         $query = "
     SELECT nama, user_number, ROUND(((task_score + UH + UAS)/3), 2) AS nilai_akhir, case
-    when ROUND(((task_score + UH + UAS)/3),2) > 70 then 'Lulus'
+    when ROUND(((task_score + UH + UAS)/3),2) > 80 then 'Lulus'
     ELSE 'Tidak Lulus'
     END AS status
     FROM (
