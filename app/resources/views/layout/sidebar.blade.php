@@ -21,7 +21,7 @@
     @if(Route::is('murid') || Route::is('submitmurid'))
     <title>Akun Murid</title>
     @endif
-    @if(Route::is('guru'))
+    @if(Route::is('guru') || Route::is('submitguru'))
     <title>Akun Guru</title>
     @endif
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -88,7 +88,7 @@
             |
             <li class="list-group-item" style="color: #3182FB">Student Account Data</li>
           @endif
-          @if(Route::is('guru'))
+          @if(Route::is('guru') || Route::is('submitguru'))
             <li class="list-group-item">Data Akun Guru</li>
             |
             <li class="list-group-item" style="color: #3182FB">Teacher Account Data</li>

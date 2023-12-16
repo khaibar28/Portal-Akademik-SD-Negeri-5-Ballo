@@ -54,6 +54,7 @@ Route::prefix('/u')->group(function(){
         Route::get('/murid', [AdminController::class, 'murid'])->name('murid')->middleware('admin');
         Route::post('/submit-murid', [AdminController::class, 'indexMurid'])->name('submitmurid')->middleware('admin');
         Route::get('/guru', [AdminController::class, 'guru'])->name('guru')->middleware('admin');
+        Route::post('/submit-guru', [AdminController::class, 'indexguru'])->name('submitguru')->middleware('admin');
     });
 });
 
