@@ -24,7 +24,7 @@
     </div>
     <div class="body d-flex align-items-center">
         <p>Data Akun Guru</p>
-        <a href="" class="btn btn-primary">Choose</a>
+        <a href="{{ route('guru') }}" class="btn btn-primary">Choose</a>
     </div>
 </div>
 @endsection
