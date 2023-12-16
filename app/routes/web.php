@@ -40,6 +40,7 @@ Route::prefix('/u')->group(function(){
         Route::post('/add', [TugasController::class, 'store'])->name('addTugas.store')->middleware('teacher');
         Route::get('/edit/{id}', [TugasController::class, 'showedit'])->name('edittugas')->middleware('teacher');
         Route::post('/edit/{id}', [TugasController::class, 'edit'])->name('editTugas.store')->middleware('teacher');
+        Route::delete('/delete-tugas/{id}', [TugasController::class, 'deleteTugas'])->name('delete-tugas')->middleware('teacher');
     });
     Route::prefix('/nilai')->group(function(){
         Route::get('/', [NilaiController::class, 'readNilai'])->name('nilai')->middleware('teacher');
