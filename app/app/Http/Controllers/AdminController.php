@@ -93,4 +93,11 @@ class AdminController extends Controller
 
         return redirect()->route('setting')->with('success', 'Akun berhasil ditambahkan');
     }
+
+    public function murid()
+    {
+        $grades = Classes::distinct()->pluck('grade');
+        $schoolYears = SchoolYear::distinct()->pluck('school_year');
+        return view('u/setting/murid', compact('grades','schoolYears'));
+    }
 }

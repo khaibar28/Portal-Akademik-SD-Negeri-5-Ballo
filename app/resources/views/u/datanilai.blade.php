@@ -9,7 +9,7 @@
     <div class="col-md-6">
         <ul class="breadcrumb">
          <li>{{ $schoolYear->school_year }}<span class="separator"> | </span></li>
-         <li>{{ $grade->grade }}<span class="separator"> | </span></li>
+         <li>{{ $grade->grade }}<span class="separator"></span></li>
       </ul>
       </div>
       <div class="col-md-2"></div>

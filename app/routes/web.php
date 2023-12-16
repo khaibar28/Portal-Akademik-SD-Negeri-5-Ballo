@@ -51,6 +51,7 @@ Route::prefix('/u')->group(function(){
         Route::post('/akun', [AdminController::class, 'addAkun'])->name('addAkun')->middleware('admin');
         Route::get('/kelas', [AdminController::class, 'kelas'])->name('kelas')->middleware('admin');
         Route::post('/kelas',[AdminController::class,'store'])->name('kelas.store')->middleware('admin');
+        Route::get('/murid', [AdminController::class, 'murid'])->name('murid')->middleware('admin');
     });
 });
 
