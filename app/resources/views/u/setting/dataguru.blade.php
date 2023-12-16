@@ -9,8 +9,8 @@
   <div class="row">
     <div class="col-md-6">
       <ul class="breadcrumb">
-      {{-- <li>{{ $schoolYear->school_year }}<span class="separator"> | </span></li>
-      <li>{{ $grade->grade }}<span class="separator"></span></li> --}}
+      <li>{{ $schoolYear->school_year }}<span class="separator"> | </span></li>
+      <li>{{ $grade->grade }}<span class="separator"></span></li>
     </ul>
     </div>
   </div>
@@ -19,24 +19,24 @@
       <thead>
         <tr>
           <th scope="col" class="text-center">No.</th>
-          <th scope="col" class="text-center">Nama Siswa</th>
-          <th scope="col" class="text-center">NIS</th>
+          <th scope="col" class="text-center">Nama Guru</th>
+          <th scope="col" class="text-center">NIP</th>
           <th scope="col" class="text-center">Aksi</th>
         </tr>
       </thead>
       <tbody>
 
-        {{-- @foreach($filteredData as $index => $data) --}}
+         @foreach($filteredData as $index => $data)
           <tr>
-            <td scope="row" class="text-center"></td>
-            <td scope="row"></td>
-            <td scope="row" class="text-center"></td>
+            <td scope="row" class="text-center">{{ $index + 1 }}</td>
+            <td scope="row" class="text-center">{{ $data->name }}</td>
+            <td scope="row" class="text-center">{{ $data->user_number }}</td>
             <td scope="row" class="text-center">
               <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="{{ asset('img/trash.svg') }}" alt="">
               </button>
             </td>
           </tr>
-        {{-- @endforeach --}}
+        @endforeach
       </tbody>
     </table>
 

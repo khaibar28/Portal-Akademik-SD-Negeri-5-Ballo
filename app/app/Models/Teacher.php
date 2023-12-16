@@ -10,7 +10,7 @@ class Teacher extends Model
     use HasFactory;
 
     protected $table = 'teachers';
-    protected $fillable = ['user_id', 'classess_id'];
+    protected $fillable = ['user_id', 'classess_id','school_years_id'];
 
     public function user()
     {
@@ -20,5 +20,9 @@ class Teacher extends Model
     public function classes()
     {
         return $this->belongsTo(Classes::class, 'classess_id');
+    }
+    public function schoolYear()
+    {
+        return $this->belongsTo(SchoolYear::class, 'school_years_id');
     }
 }

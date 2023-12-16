@@ -10,6 +10,7 @@ use App\Models\Score;
 use App\Models\Subject;
 use App\Models\SchoolYear;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -51,7 +52,7 @@ class AdminController extends Controller
         }
 
         if ($user->role === 'student') {
-          
+
             $subjects = Subject::all();
 
             foreach ($subjects as $subject) {
@@ -61,33 +62,34 @@ class AdminController extends Controller
                     'subjects_id' => $subject->id,
                     'school_years_id' => $schoolYear->id
                 ];
-    
+
                 Score::create($scoreData);
             }
-    
+
             return redirect()->route('setting')->with('success', 'Scores created successfully');
-       
+
         }elseif ($user->role === 'teacher') {
 
             $teacherData = [
                 'classess_id'=> $class->id,
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                'school_years_id' => $schoolYear->id
             ];
 
                 Teacher::create($teacherData);
-                return redirect()->route('setting')->with('success', 'Scores created successfully');       
+                return redirect()->route('setting')->with('success', 'Scores created successfully');
         }
-       
+
     }
 
     public function addAkun(Request $request){
-        
+
         $data = $request->validate([
             'name' => 'required',
             'password' => 'required',
             'user_number' => 'required',
             'role' => 'required',
-        ]); 
+        ]);
 
         User::create($data);
 
@@ -101,8 +103,39 @@ class AdminController extends Controller
         return view('u/setting/murid', compact('grades','schoolYears'));
     }
 
-    public function indexMurid(){
-        return view('u/setting/datamurid');
+    public function indexMurid(Request $request){
+
+        $request->validate([
+            'school_year' => 'required|string',
+            'grade' => 'required|string',
+        ]);
+
+        $schoolYear = $request->input('school_year');
+        $grade = $request->input('grade');
+
+        $request->session()->put('selectedFilterData', [
+            'school_year' => $schoolYear,
+            'grade' => $grade,
+        ]);
+
+        return $this->showDataMurid($request);
+    }
+
+    public function showDataMurid(Request $request){
+        $selectedFilteredData = $request->session()->get('selectedFilterData');
+        $schoolYear = SchoolYear::where('school_year', $selectedFilteredData['school_year'])->first();
+        $grade = Classes::where('grade', $selectedFilteredData['grade'])->first();
+
+       $filteredData = DB::table('scores')
+        ->select(DB::raw('DISTINCT users.user_number, users.name, classess.grade, school_years.school_year'))
+        ->join('users', 'scores.user_id', '=', 'users.id')
+        ->join('school_years', 'scores.school_years_id', '=', 'school_years.id')
+        ->join('classess', 'scores.classess_id', '=', 'classess.id')
+        ->where('school_years.school_year', '=',  $schoolYear->school_year)
+        ->where('classess.grade', '=', $grade->grade)
+        ->get();
+
+        return view('u/setting/datamurid',compact('filteredData', 'schoolYear', 'grade'));
     }
 
     public function guru()
@@ -112,7 +145,38 @@ class AdminController extends Controller
         return view('u/setting/guru', compact('grades','schoolYears'));
     }
 
-    public function indexGuru(){
-        return view('u/setting/dataguru');
+    public function indexGuru(Request $request){
+
+        $request->validate([
+            'school_year' => 'required|string',
+            'grade' => 'required|string',
+        ]);
+
+        $schoolYear = $request->input('school_year');
+        $grade = $request->input('grade');
+
+        $request->session()->put('selectedFilterData', [
+            'school_year' => $schoolYear,
+            'grade' => $grade,
+        ]);
+
+        return $this->showDataGuru($request);
+    }
+
+    public function showDataGuru(Request $request){
+        $selectedFilteredData = $request->session()->get('selectedFilterData');
+        $schoolYear = SchoolYear::where('school_year', $selectedFilteredData['school_year'])->first();
+        $grade = Classes::where('grade', $selectedFilteredData['grade'])->first();
+
+        $filteredData = DB::table('teachers')
+        ->select(DB::raw(' users.user_number, users.name, classess.grade, school_years.school_year'))
+        ->join('users', 'teachers.user_id', '=', 'users.id')
+        ->join('school_years', 'teachers.school_years_id', '=', 'school_years.id')
+        ->join('classess', 'teachers.classess_id', '=', 'classess.id')
+        ->where('school_years.school_year', '=',  $schoolYear->school_year)
+        ->where('classess.grade', '=', $grade->grade)
+        ->get();
+
+        return view('u/setting/dataguru',compact('filteredData', 'schoolYear', 'grade'));
     }
 }
