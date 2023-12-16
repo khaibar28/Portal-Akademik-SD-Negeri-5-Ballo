@@ -18,7 +18,7 @@
     @if(Route::is('nilai') || Route::is('submitnilai'))
     <title>Nilai Akhir</title>
     @endif
-    @if(Route::is('murid'))
+    @if(Route::is('murid') || Route::is('submitmurid'))
     <title>Akun Murid</title>
     @endif
     @if(Route::is('guru'))
@@ -83,7 +83,7 @@
             |
             <li class="list-group-item" style="color: #3182FB">Final Score</li>
           @endif
-          @if(Route::is('murid'))
+          @if(Route::is('murid') || Route::is('submitmurid'))
             <li class="list-group-item">Data Akun Murid</li>
             |
             <li class="list-group-item" style="color: #3182FB">Student Account Data</li>
