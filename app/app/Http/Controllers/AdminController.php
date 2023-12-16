@@ -100,4 +100,10 @@ class AdminController extends Controller
         $schoolYears = SchoolYear::distinct()->pluck('school_year');
         return view('u/setting/murid', compact('grades','schoolYears'));
     }
+    public function guru()
+    {
+        $grades = Classes::distinct()->pluck('grade');
+        $schoolYears = SchoolYear::distinct()->pluck('school_year');
+        return view('u/setting/guru', compact('grades','schoolYears'));
+    }
 }
