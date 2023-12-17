@@ -66,7 +66,7 @@ class AdminController extends Controller
                 Score::create($scoreData);
             }
 
-            return redirect()->route('setting')->with('success', 'Scores created successfully');
+            return redirect()->route('kelas')->with('success', 'Scores created successfully');
 
         }elseif ($user->role === 'teacher') {
 
@@ -77,7 +77,7 @@ class AdminController extends Controller
             ];
 
                 Teacher::create($teacherData);
-                return redirect()->route('setting')->with('success', 'Scores created successfully');
+                return redirect()->route('kelas')->with('success', 'Scores created successfully');
         }
 
     }
@@ -93,7 +93,7 @@ class AdminController extends Controller
 
         User::create($data);
 
-        return redirect()->route('setting')->with('success', 'Akun berhasil ditambahkan');
+        return redirect()->route('akun')->with('success', 'Akun berhasil ditambahkan');
     }
 
     public function murid()
@@ -195,10 +195,10 @@ class AdminController extends Controller
                 ->where('school_years_id', $schoolYear->id)
                 ->delete();
 
-                return redirect()->route('setting')->with('success', 'Students deleted successfully');
+                return redirect()->route('murid')->with('success', 'Students deleted successfully');
 
         } catch (\Exception $e) {
-            return redirect()->route('setting')->with('error', 'Failed to delete students. Error: ' . $e->getMessage());
+            return redirect()->route('murid')->with('error', 'Failed to delete students. Error: ' . $e->getMessage());
         }
     }
 
@@ -216,9 +216,9 @@ class AdminController extends Controller
             ->where('school_years_id', $schoolYear->id)
             ->delete();
 
-            return redirect()->route('setting')->with('success', 'Teacher deleted successfully');
+            return redirect()->route('guru')->with('success', 'Teacher deleted successfully');
         } catch (\Exception $e) {
-            return redirect()->route('setting')->with('error', 'Failed to delete teacher');
+            return redirect()->route('guru')->with('error', 'Failed to delete teacher');
         }
     }
 

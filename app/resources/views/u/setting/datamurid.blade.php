@@ -40,7 +40,35 @@
         </tbody>
     </table>
 
+
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <center>
+                    <div class="mt-3">
+                        <img src="{{ asset('img/alert_merah.svg') }}" alt="">
+                    </div>
+                    <div class="modal-body p-0">
+                        <p class="m-0 mt-1" style="font-weight: bold; font-size: 15px">Are you sure want to delete?</p>
+                        <p class="m-0 mt-1" style="font-size: 12px">Data that has been deleted cannot be restored</p>
+                    </div>
+                    <div class="p-3">
+                        <button type="button" class="btn" data-bs-dismiss="modal"
+                            style="border: 1px #3182FB solid">No</button>
+                        <button type="submit" form="delete-form" class="btn btn-danger">Yes</button>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <form id="delete-form" method="POST" action="{{ route('delete-student') }}">
+        @csrf
+        @method('DELETE')
+        <input type="hidden" name="user_number" id="user-number-input">
+    </form>
+
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -66,7 +94,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
