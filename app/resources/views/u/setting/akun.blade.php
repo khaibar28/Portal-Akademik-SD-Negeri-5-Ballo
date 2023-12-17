@@ -5,6 +5,12 @@
 
 @section('content')
     <div class="container">
+        @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
         <form action="{{ route('addAkun') }}" method="post">
             @csrf
             <div class="row">

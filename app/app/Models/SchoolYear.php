@@ -8,12 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolYear extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'school_years';
     protected $fillable = ['school_year'];
 
-    public function score() 
+    public function score()
     {
         return $this->hasMany(Score::class, 'school_years_id');
+    }
+    public function teacher()
+    {
+        return $this->hasMany(Teacher::class, 'school_years_id');
     }
 }

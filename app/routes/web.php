@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -40,6 +41,7 @@ Route::prefix('/u')->group(function(){
         Route::post('/add', [TugasController::class, 'store'])->name('addTugas.store')->middleware('teacher');
         Route::get('/edit/{id}', [TugasController::class, 'showedit'])->name('edittugas')->middleware('teacher');
         Route::post('/edit/{id}', [TugasController::class, 'edit'])->name('editTugas.store')->middleware('teacher');
+        Route::delete('/delete-tugas/{id}', [TugasController::class, 'deleteTugas'])->name('delete-tugas')->middleware('teacher');
     });
     Route::prefix('/nilai')->group(function(){
         Route::get('/', [NilaiController::class, 'readNilai'])->name('nilai')->middleware('teacher');
@@ -55,6 +57,9 @@ Route::prefix('/u')->group(function(){
         Route::post('/submit-murid', [AdminController::class, 'indexMurid'])->name('submitmurid')->middleware('admin');
         Route::get('/guru', [AdminController::class, 'guru'])->name('guru')->middleware('admin');
         Route::post('/submit-guru', [AdminController::class, 'indexguru'])->name('submitguru')->middleware('admin');
+        Route::delete('/delete-student', [AdminController::class, 'deleteStudent'])->name('delete-student')->Middleware('admin');
+        Route::delete('/delete-teacher', [AdminController::class, 'deleteTeacher'])->name('delete-teacher')->middleware('admin');
+
     });
 });
 

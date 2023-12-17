@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('classess_id');
+            $table->unsignedBigInteger('school_years_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('classess_id')->references('id')->on('classess');
+            $table->foreign('school_years_id')->references('id')->on('school_years');
         });
     }
 
