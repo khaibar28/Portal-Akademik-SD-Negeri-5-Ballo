@@ -179,4 +179,47 @@ class AdminController extends Controller
 
         return view('u/setting/dataguru',compact('filteredData', 'schoolYear', 'grade'));
     }
+
+    public function deleteStudent(Request $request)
+    {
+        $selectedFilteredData = $request->session()->get('selectedFilterData');
+        $schoolYear = SchoolYear::where('school_year', $selectedFilteredData['school_year'])->first();
+        $grade = Classes::where('grade', $selectedFilteredData['grade'])->first();
+        $userNumber = $request->input('user_number');
+
+        try {
+            $userId = User::where('user_number', $userNumber)->value('id');
+
+            Score::where('user_id', $userId)
+                ->where('classess_id', $grade->id)
+                ->where('school_years_id', $schoolYear->id)
+                ->delete();
+
+                return redirect()->route('setting')->with('success', 'Students deleted successfully');
+
+        } catch (\Exception $e) {
+            return redirect()->route('setting')->with('error', 'Failed to delete students. Error: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteTeacher(Request $request){
+    $selectedFilteredData = $request->session()->get('selectedFilterData');
+    $schoolYear = SchoolYear::where('school_year', $selectedFilteredData['school_year'])->first();
+    $grade = Classes::where('grade', $selectedFilteredData['grade'])->first();
+    $userNumber = $request->input('user_number');
+
+        try {
+            $userId = User::where('user_number', $userNumber)->value('id');
+
+            Teacher::where('user_id', $userId)
+            ->where('classess_id', $grade->id)
+            ->where('school_years_id', $schoolYear->id)
+            ->delete();
+
+            return redirect()->route('setting')->with('success', 'Teacher deleted successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('setting')->with('error', 'Failed to delete teacher');
+        }
+    }
+
 }

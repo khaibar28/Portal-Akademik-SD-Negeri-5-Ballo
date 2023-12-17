@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -56,6 +57,9 @@ Route::prefix('/u')->group(function(){
         Route::post('/submit-murid', [AdminController::class, 'indexMurid'])->name('submitmurid')->middleware('admin');
         Route::get('/guru', [AdminController::class, 'guru'])->name('guru')->middleware('admin');
         Route::post('/submit-guru', [AdminController::class, 'indexguru'])->name('submitguru')->middleware('admin');
+        Route::delete('/delete-student', [AdminController::class, 'deleteStudent'])->name('delete-student')->Middleware('admin');
+        Route::delete('/delete-teacher', [AdminController::class, 'deleteTeacher'])->name('delete-teacher')->middleware('admin');
+
     });
 });
 
