@@ -85,17 +85,17 @@ class TugasController extends Controller
         $subjectData = Subject::where('subject', $subject)->first();
         $schoolYearData = SchoolYear::where('school_year', $schoolYear)->first();
 
+        $data = $request->validate([
+            'task_description' => 'required',
+            'deadline' => 'required',
+        ]);
+
         $formattedDeadline = Carbon::createFromFormat('d-m-Y', $request->input('deadline'))->format('Y-m-d');
 
         if (!$classes || !$subjectData || !$schoolYearData) {
             // Handle the case when data is not found
             return redirect()->route('tugas')->with('error', 'Data not found');
         }
-
-        $data = $request->validate([
-            'task_description' => 'required',
-            'deadline' => 'required',
-        ]);
 
 
         $data = [
@@ -128,4 +128,20 @@ class TugasController extends Controller
 
         return redirect()->route('tugas')->with('success','Berhasil diperbaharui');
     }
+
+    public function deleteTugas(Request $request) {
+        $taskId = $request->input('task_id');
+
+        try {
+            // Cari dan hapus tugas berdasarkan ID
+            $task = Task::findOrFail($taskId);
+            $task->delete();
+
+            return redirect()->route('tugas')->with('success','Berhasil diperbaharui');
+        } catch (\Exception $e) {
+            // Tangani kesalahan jika tugas tidak ditemukan atau terjadi kesalahan lainnya
+            return redirect()->back()->with('error', 'Tidak dapat menghapus tugas. Kesalahan: ' . $e->getMessage());
+        }
+    }
+
 }
