@@ -13,6 +13,10 @@
         <a href="{{ route('kelas') }}" class="btn btn-primary">Choose</a>
     </div>
     <div class="body d-flex align-items-center">
+        <p>Tambahkan Tahun Ajaran</p>
+        <a href="{{ route('tahun') }}" class="btn btn-primary">Choose</a>
+    </div>
+    <div class="body d-flex align-items-center">
         <p>Data Akun Murid</p>
         <a href="{{ route('murid') }}" class="btn btn-primary">Choose</a>
     </div>

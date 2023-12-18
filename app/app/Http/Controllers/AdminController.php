@@ -24,6 +24,24 @@ class AdminController extends Controller
         return view('u/setting/akun');
     }
 
+    public function tahun()
+    {
+        return view('u/setting/year');
+    }
+
+    public function addTahun(Request $request){
+
+        $data = $request->validate([
+            'school_year' => 'required',
+        ]);
+
+        $school_years = new SchoolYear();
+        $school_years->name = $request->input('school_year');
+        $school_years->save();
+
+        return redirect()->route('tahun')->with('success', 'Tahun ajaran berhasil ditambahkan');
+    }
+
     public function kelas()
     {
         $grades = Classes::distinct()->pluck('grade');
