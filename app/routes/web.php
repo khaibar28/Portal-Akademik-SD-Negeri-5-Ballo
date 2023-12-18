@@ -58,7 +58,7 @@ Route::prefix('/u')->group(function(){
         Route::get('/guru', [AdminController::class, 'guru'])->name('guru')->middleware('admin');
         Route::post('/submit-guru', [AdminController::class, 'indexguru'])->name('submitguru')->middleware('admin');
         Route::delete('/delete-student', [AdminController::class, 'deleteStudent'])->name('delete-student')->Middleware('admin');
-        Route::delete('/delete-teacher', [AdminController::class, 'deleteTeacher'])->name('delete-teacher')->middleware('admin');
+        Route::delete('/delete-t    eacher', [AdminController::class, 'deleteTeacher'])->name('delete-teacher')->middleware('admin');
         Route::get('/tahun', [AdminController::class, 'tahun'])->name('tahun')->middleware('admin');
         Route::post('/tahun', [AdminController::class, 'addTahun'])->name('addTahun')->middleware('admin');
     });
