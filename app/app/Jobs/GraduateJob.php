@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Models\Score;
 use App\Models\SchoolYear;
+use App\Models\Classes;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -34,7 +35,10 @@ class GraduateJob implements ShouldQueue
         $nextSchoolYearId = $this->schoolYearId + 1;
         $nextSchoolYear = SchoolYear::find($nextSchoolYearId);
 
-        if ($nextSchoolYear) {
+        $nextClassId = $this->classId + 1;
+        $nextClass = Classes::find($nextClassId);
+
+        if ($nextSchoolYear && $nextClass) {
             $existingScore = Score::where([
                 'user_id' => $this->studentId,
                 'subjects_id' => $this->subjectId,
