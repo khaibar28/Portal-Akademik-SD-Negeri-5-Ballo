@@ -114,19 +114,30 @@ class AdminController extends Controller
 
     }
 
-    public function addAkun(Request $request){
-
+    public function addAkun(Request $request)
+    {
+        // Validasi input
         $data = $request->validate([
             'name' => 'required',
             'password' => 'required',
-            'user_number' => 'required',
+            'user_number' => 'required|unique:users',
             'role' => 'required',
         ]);
 
+        // Mengecek apakah user_number sudah ada di database
+        $existingUser = User::where('user_number', $data['user_number'])->first();
+
+        if ($existingUser) {
+            // Jika user_number sudah ada, kembali ke halaman sebelumnya dengan pesan kesalahan
+            return redirect()->back()->with('error', 'User dengan nomor tersebut sudah ada.');
+        }
+
+        // Jika user_number belum ada, tambahkan akun baru
         User::create($data);
 
         return redirect()->route('akun')->with('success', 'Akun berhasil ditambahkan');
     }
+
 
     public function murid()
     {
