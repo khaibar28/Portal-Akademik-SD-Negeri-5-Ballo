@@ -30,9 +30,9 @@ class StudentController extends Controller
 
             foreach ($semesters as $semester) {
                 if ($semester->school_years_id % 2){
-                    $semester_even[] = $semester->school_years_id;
-                } else {
                     $semester_odd[] = $semester->school_years_id;
+                } else {
+                    $semester_even[] = $semester->school_years_id;
                 }
             }
 
@@ -97,9 +97,9 @@ class StudentController extends Controller
 
             foreach ($semesters as $semester) {
                 if ($semester->school_years_id % 2){
-                    $semester_even[] = $semester->school_years_id;
-                } else {
                     $semester_odd[] = $semester->school_years_id;
+                } else {
+                    $semester_even[] = $semester->school_years_id;
                 }
             }
 
